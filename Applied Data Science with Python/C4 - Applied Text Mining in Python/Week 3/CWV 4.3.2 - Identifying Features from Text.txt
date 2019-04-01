@@ -1,0 +1,83 @@
+In this video we are going to answer
+the first of the three questions on what to think about in
+a supervised learning scenario. And that is feature identification. How do you identify features from text? So why is text data so unique? The text data presents very
+unique set of challenges when you're looking at in
+a supervised learning scenario. All the information that you need or that
+you have in these cases is all in text. But text is a very weird concept. There are different ways you
+can parse a text document. The features can be pulled from
+text in different granularities. So let's take an example of the type
+of textual features that you will get. The basic constructs in
+text is the set of words. So, these are by far,
+the most common class of features and add a significant number of
+features when you add to it. So, for example, in English language,
+there are about 40,000 unique words. So just looking at that in common English,
+you would have 40,000 features. If you're looking at social media or
+some other genres of data, you might get very many more
+number of features because you could have unique word spellings and
+so on and all of those would be words. When you get these many features, one of
+the questions you're to start answering is, how do you handle
+commonly-occurring words? In some cases, they are called stop words. Words like the,
+that occurs fairly commonly, and that's the most frequent
+word in the English language. And every document, every sentence
+would probably have the word the. But more generally the word
+the is not as important for a classification task than any other word. Let's say if you're talking about politics
+and you have parliament as a word. Parliament as a word is more
+important than the word the to determine whether the document
+belongs to the politics class. The next step is normalization. Do you make all the words lower case so
+that parliament with a capital P and a small p are treated the same,
+or add the same feature? Or should we leave it as-is? US, capitals, would be the United States. Whereas if you make it lowercase, it would
+be indistinguishable from the word us. So, in some cases, you want to leave it as
+is, in some cases you want it lowercase, so how do you make that choice? There are also issues about stemming and
+lemmatization. So for example, you don't want
+plurals to be different features. So you would want to lemmatize them or
+to stand them. Then, all of this is still about words. Let's go beyond words. You can actually identify features or
+characteristics of words. For example, capitalization. The word, as I said, US is capitalized, White House, with the W capitalized and
+the H capitalized, it's very different than white house,
+a white house, right? So, capitalization is important feature to
+identify certain words and their meanings. You could use parts of speech
+of words in a sentence. And those could be a feature. So for
+example if it's important to say that this particular word had
+a determinant in front. Then that word is, so
+then that becomes an important feature. An example would be the weather,
+whether example. Recall that we talked about a spelling
+correction problem where you want to determine whether the correct spelling
+is whether as in W-H-E-T-H-E-R or weather as in W-E-A-T-H-E-R. If you see a determiner like,
+the, in front of that word, it most likely would be
+the weather as in W-E-A-T-H-E-R. So that particular part of
+speech before this word becomes a very important feature. You also might want to know
+the grammatical structure or parse the sentence and
+get the sentence parse structure to see what is the verb associated
+with a particular noun. How far is it from the associated noun and
+so on. And then, you may want to group
+words of similar meaning to have one feature to represent a set of words. An example would be buy,
+purchase, and so on. These are all synonyms, and you don't
+want to have two different features, one for buy, one for purchase, you may
+want to group them together because they mean the same,
+they have the same semantics. But it could also be other groups,
+like titles or honorifics, like Mr, Ms,
+Dr, Professor, and so on. Or the set of numbers, or digits, because
+you don't want to specifically have a feature for zero and other features for
+one, and so on, all the numbers. So you might want to say, if it's
+a number anywhere between 0 to 10,000, I'm just going to call it something,
+a number, right, so suddenly you've reduced
+10,000 features into one. Or the same with dates. If you are able to recognize dates
+using irregular expressions for example and you do a very good job of it,
+then you may want say, you know what, maybe all dates would be identified and
+called one feature as a date, because I don't want to learn something that is for
+every individual date possible. Then it's an infinite list. Other type of features would be
+depending on the classification tasks. So for example, you may have features
+that come from inside the words or have features with word sequences. An example would be bigrams or trigrams. The White House example comes to mind. Where you want to say, White House, as a two word construct as a bigram
+is conceptually one thing. As compared to white and house as two
+different features, two different things. You may also want to have character
+sub-sequences such as ing or ion. And just by looking at
+it you know that ing is basically saying it is a word
+in its continuous form, right? So, just looking at ing in a word,
+we'd be able to call it as a verb. And ion more likely at the end of
+a word would be a noun of some form. So just these character subsequences
+can help you identify some classes if that is important for this particular
+classification task that you have. So how would you do it? We have talked about some
+of these features and I would suggest you recall
+the lectures from previous week that was about natural language
+processing and basic NLP tasks. And we have addressed some
+of these things there. You just want to identify them now and
+make it available as features for your classification task. We'll see more examples of features soon.

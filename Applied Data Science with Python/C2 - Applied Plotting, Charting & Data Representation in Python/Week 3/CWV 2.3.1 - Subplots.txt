@@ -1,0 +1,90 @@
+In module one, we talked about principles,
+which underly good visualizations, we pulled from work by Cairo and Tufty. In Module 2, we opened up
+the Matplotlib Python Library. Starting with the architecture and working our way through some
+the most common kinds of plots. Scatter plots, line graphs and bar charts. In this module,
+we're going to do a bit deeper and talk about multiple plots with the same
+figure, interaction, animation and a few more kinds of plots which you might
+find useful in your data science journey. Now, if you've been
+doing these assignments, you've undoubtedly been visiting
+our course discussion forms, going to stack overflow, and reading
+the map plot live API documentation. I want to point you to
+the Matplotlib mailing list as well is another great resource. There would be resource posted
+below on how to browse that list. It's pretty common with open source
+projects to have two mailing lists. One for developers and
+the other for users. The users place is where most of
+the question answering happens. But I encourage to you look at
+the developer archives, too. To get an idea as to what these kind of
+projects look like behind the scenes. Let's start this module with
+a deeper look at subplots. Thus far we have been using a signal axis
+object to plot a single graph or figure. Sometimes it is useful to show
+two complex plot side by side for the viewer to compare. Matplotlib handles this
+with a single figure. Let's first set our rendering
+backend to the NPA backend, then import our pyplot module and
+NumPy, as we'll need then both. If we look at the subplot documentation, we see that the first argument
+is the number of rows, the second the number of columns,
+and the third is the plot number. In matplotlib, a conceptual grid
+is overlayed on the figure. And a subplot command allows you to create
+axis to different portions of this grid. For instance, if we want to to
+create two plots side by side, we would call subplot with
+the parameters 1, 2, and 1. This would allow us to use 1 row,
+with 2 columns, and set the first axis to be the current axis. This.
+Let's do this now. We'll create a new figure and then a new
+subplot with one row and two columns. And we'll ask for the left hand side axis. The greatest number alternatively
+from left to right and top to bottom. So subsequent calls to plot would
+create the left hand side plot. Okay, great we've got a skinny
+plot on the left hand side. We can then call subplot again with the
+last parameter as a two to plot new data to a plot on the right hand side. And that's nice. Now we have two plots,
+each with their own axis objects. Now the norm with matplotlib
+is that you store the axis object that you get back from the subplot. But you can call subplot again. At any time with the parameters
+that interest you in order to get back a given axis. Here, let's put exponential
+on the linear graph 2 This demonstrates a common problem, it looked like linear had roughly the same
+area under the line on the chart until we asked matplotlib to put
+them into one graph. Then the y axis was refreshed. There would be a big problem with
+misleading the reader if we didn't find a way to lock axis between two plots. When you create a new subplot you
+are able to share the x, y, or both axis using the share x and
+share y parameters. Here's how we could clean this up,
+we create a new figure. Then created a subplot on
+the left-hand side store it in AX1. After plotting that data we create
+the axis on the right-hand side, and we indicate explicitly
+we want to share the y-axis. Now we don't have to store the subplot
+to a variable like we did with AX1. Remember that when you use the scripting
+interface, high plot is going to get the current axis object with GCA or
+get current axis underneath. So a call to pipeplot.plot
+will transparently work with the last axis objects that we're using. There we go. Two plots side by side and
+we've locked the y axis. Now, those of you who have been playing
+close attention will note that I used the add subplot function
+in the last module. But I didn't pass in three parameters,
+just one. The maplotlib developers allow you to
+specify the row, columns, and number of the plot that you want with either
+three parameters or a single parameter. Where the hundreds values the first
+argument, the tens the second argument, and the ones the third argument. So we will call subplot with three
+parameters, one, two, and one. And the axis that return
+should be equal to 1, which is created with the 1 parameter,
+121. I'm frankly not a big fan
+of this second syntax. It feels pretty hacky and it really
+only saves typing two commas and yet limits us to single digit radius. Now computer science folks might
+feel a little twitch inside like something's wrong with this notation. And I'll say that it certainly bugged
+me the first few times I saw it. An important fact to remember is that
+the plot location in the matrix of items is index starting at one and not at zero, as would be the convention
+if you were using something like NumPy. So if you're iterating through a matrix or
+list, create subplots. Remember to start at position plus one. Now, there's a nice function
+called subplots, note the plural, which allows you to get many axis objects
+at once, and I think this is great. So, if we wanted to get a three by
+three grid with all of the axis x and y ranges locked, we can do so like this. The syntax looks a little goofy
+maybe since we're unpacking the results of the subplots
+function directly. Wherein it's an effective way to build
+a grid where everything shares an axis. And of course, you could just
+return the tuple of plots and iterate it over if you wanted to. The results however look really nice. Note that this method turns off the y and
+x labels except for those plots which are on the left hand
+side or the bottom of the figure. If you want to turn the labels back on, you need to iterate through the axis
+objects and do it yourself. You could do this directly through
+the axis objects you have or iterate through all the axis objects
+in the figure and change the x and y tick labels to be visible. Unfortunately, on the notebook
+backend on my installation, this doesn't redraw the figure. But you can force the figure to redraw
+by calling the canvas draw function. Remember you can get the current figure
+at any time using pyplots gcf or get current figure or function. Okay, so those are the basics
+of subplots and matplotlib. You can see that you can leverage
+everything you learned to the last module with this new knowledge to create
+figures which have rich subplots. In the next module, I want to exploit
+this while introducing you to pretty fundamental data science chart,
+the histogram.

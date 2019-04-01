@@ -1,0 +1,174 @@
+In this video, we are going to
+move on from basic NLP tasks to advanced NLP tasks using NLTK. If you recall the NLP
+tasks that we look so far are counting words, counting
+frequency of words, finding unique words, finding sentence boundaries,
+even finding tokens in stemming. In this video, we will talk about part of speech tagging
+and parsing the sentence structure. But other NLP tasks like
+semantic role labeling and named entity recognition,
+that we'll cover later on. Let's start with part-of-speech tagging,
+or POS tagging. Recall from your high school grammar
+that part-of-speech are these verb classes like nouns,
+and verbs, and adjectives. There are many, many more tags than these. You can see that you have conjunctions and
+cardinals. Cardinals are, if you have a number, then
+you are to kind of assign that word class. You have determiner, you have prepositions,
+you have modal words, you have nouns. Again, nouns could be singular nouns,
+and plural nouns, and proper nouns. You have possessives and
+pronouns again of multiple types, you have adverbs, symbols, and then verbs. And verbs themselves are multiple classes,
+you have verbs and gerunds and past tense verbs and so on. How to get them? Recall that in NLTK, you need to import
+NLTK first, and then you can get more information about these word classes,
+by issuing a help command. So nltk.help you've been tagset,
+this comes from upenn tags. So you, if you say upenn_tagset,
+and then give the tag there, MD, it'll tell you that MD stands for modal auxiliary, and
+these are the words that are modal words. Can, cannot, could, couldn't, may, might, ought, shall, should,
+shouldn't, will, would, and so on. So how do you do POS tagging with NLTK? Recall that you have to split
+a sentence into words, okay. So this example is something
+that we have seen. Children shouldn't drink
+a sugary drink before bed. But if I split it into words, so
+you could use a word_tokenize from an NLTK package that text13
+then becomes this individual word. Recall that there were ten words here, children shouldn't,
+as in a separate token, and then drink a sugary drink before bed,
+and the full stop is the last token. Then, if you run the post tag there, by using this command nltk.pos_tag
+on this tokenized form, you'll get the tags, so
+children is a plural noun, should is a model word,
+n't is tagged as an end verb, drink is a verb, a is a determiner,
+sugary is an adjective and so on. So that is how you'll
+get the part of speech. Now, why do you want part of speech,
+because if you are trying to club all nouns together because they
+all have some sort of a similar form or all modulus together then using the part
+of speech tag gives you one class or one cluster for all of these words, and then you don't have to
+address them individually. So when your doing some
+feature engineering or feature extraction that is very useful. We'll talk about features and
+how to use it next week. Now, that we know how to do POS tagging, we should talk about
+ambiguity in POS tagging. In fact,
+ambiguity is very common in English. Let's take this example,
+visiting aunts can be a nuisance. What do you think it means? Does it mean visiting aunts
+can be a nuisance, and this going to visit aunt can be nuisance
+or aunts who are coming in are nuisance. So if you tokenize the word with
+visiting aunts can be a nuisance and do a pos_tag on that you'll get one tag. So when you say visiting is a verb, and that aunts is a noun, a plural noun. This representation shows that you
+are doing the act of visiting. So visiting is the verb for the aunt,
+you are going to visit your aunt. The alternate POS tag would be
+visiting as an adjective for aunt. So that would mean that the aunts
+are the ones who are visiting you. So you can see that this
+particular sentence is ambiguous, the way it is written. POS tagging is not, and if fact, NLTK gives the first version and
+not the second. And that is because you don't
+really have a way to say, give me all possible variance. And sometimes the ones that take
+precedence are the ones where you mostly likely see the word visiting in
+the context of usages in a large corpus. So visiting is more often
+used as a continuous or a form of a verb rather than
+using it as an adjective. So the probability of finding visiting
+as an adjective is lower and so the first word winds up, but this is a
+valid alternate representation of POS tag. Okay, so that was POS tagging. Once, we have done some POS tagging, we can look at parsing
+the sentence structure itself. Okay, now, that we have looked at how you would find
+out the parts of speech of a sentence. Let's look at the sentence
+structure itself, and parsing of the sentence structure. Making sense of sentences is easy if
+you follow a well defined grammatic structure, okay? So when you have a sentence like this,
+Alice loves Bob, you want to know which is the noun and
+which is the verb and so on. But we also want to know how
+are they related in the sentence? How did they come together
+to form the sentence? So in NLTK, you'll use
+nltk.word_tokenize Alice loves Bob. That'll give you these three words in
+the sentence, right, Alice loves Bob. Those are the three words, but the sentence itself is
+constituted of two things. You have noun phrase and verb phrase. The word phrase itself can be
+a word followed by a noun phrase. That is the grammar extraction in English. And for this particular sentence this
+is the grammar structure that is used. Now, that we have that, noun trace itself
+can be a noun, so Alice can be a noun and then Bob is the other noun and
+there is one verb that is loves. So by doing this structure and
+writing out this grammar where you have these grammar rules on
+the right saying S gives NP VP, VP is V and NP, and then Alice and
+Bob can be NP and loves would be a V. You have created what is
+called a context free grammar. And then you can use
+NLTK's contextual grammar input statements like nltk.CFG.fromstring, and then you write the string out,
+that will give you the grammar. And you can use this grammar
+to parse the sentence. So you can use nltk.ChartParser,
+you create a parser using the grammar that you have defined, sort is as parser,
+and then parse the sentence. So you parse text15, and when you
+parse it, it gives you parse trees. And then you can print that tree,
+so you'll print the tree as this. So the way you will parse it out,
+for lack of a better word, is you have S, that's sentence,
+that constitutes two brackets. The NP bracket that has Alice and
+a VP bracket where a VP bracket has a V bracket for
+loves the verb and an empty bracket for Bob exactly
+the way we have drawn the tree. As with part of speech
+tagging parsing also is ambiguous and ambiguity may exist even
+if sentences are grammatically correct. So let's take this example,
+this is a very famous example. I saw the man with a telescope. Now, did you see with the telescope? Or did you see the man who
+was holding a telescope? There are two meanings, and
+the meaning is with respect to where this preposition with
+the telescope gets attached. So this is a typical
+preposition attachment problem. And if you look at the grammar, you
+will see where that ambiguity comes in. The fact that this is
+grammatically correct is because you have sentence that is noun phrase and
+verb phrase. But then this verb phrase can
+be split into two things. So noun phrase is I, that is clear. But verb phrase could either be a verb
+followed by a noun phrase as in, saw the man with the telescope. Or it could be a verb phrase followed
+by a preposition phrase, where you have the verb phrase is, saw the man, because
+verb phrase could still be verb and a noun phrase,
+that's what the saw the man is. And then you have preposition phrase,
+which is preposition in a noun phrase, so with and the telescope. So these are the two alternatives,
+the bold red and the dotted red. And those are the two trees that
+distinguish the two meanings of you would parse out the meaning from the sentence. We can do the same thing and this becomes apparent when we
+use NLTK's parsing as well. So you first tokenize the sentence, nltk.word_tokenize I saw
+the man with a telescope. And you can load a grammar, so if write your own file
+mygrammar1.cfg that has these lines. That the sentence is
+non-present verb phrase. Then verb phrase could be a verb and
+a noun phrase or a verb phrase and a preposition phrase. Preposition phrase itself can be
+a preposition and a noun phrase and so on. And then if you load this
+up as a grammar using nltk.data.load, that
+will create a grammar. Then you can create,
+the grammar has 13 rules, 13 productions, that is what it is called. And then you can create a chart parser
+using this grammar, so you can say nltk.ChartParser{grammar1), exactly
+the same way we did it a few slides back. And then print out all trees
+from this parser from that I sorry the parser you will see
+that there are indeed two trees. One, which is a noun phrase and
+a verb phrase where verb phrase has verb phrase and
+a preposition phrase. And another one which is a noun phrase and a verb phrase where verb phrase
+is a verb and noun phrase. And the noun phrase itself
+has a preposition with it. So these are the two parse tree structures that you'll get when you parse
+using this context with grammar. Now, we gave examples of simple grammars,
+and said we'll create a context for grammar out of
+it, but we can not do that every time. In fact, generating the grammar and
+generating grammar rules itself is a learning task that you could learn, and
+you need a lot of training data for that. And a lot of manual effort and hours
+have gone into creating what is known as a tree back, basically,
+a big collection of parse trees. From Wall Street Journal, and in fact, if
+we have access to treebank through NLTK. So if you say from NLTK corpus
+import treebank and say treebank.parsed_sentences this particular
+first sentence from Wall Street Journal. And you print out,
+you will see the sentence and you'll realize that you
+have seen it before. This is that Pierre Vinken sentence. So, Pierre Vinken, 61 years old, will join the board as a nonexecutive
+director, November 29th. So that sentence has been parsed using
+this structure, in the tree bank, and you have that available. Just to conclude, you see that there are
+complexities in part of speech tagging and parsing, beyond just how to do it. So for example, there is this usage and
+uncommon usage of words. An example is the old man the boat,
+when you read it you feel that the old man is
+actually a man who is old, but then you cannot finish the sentence,
+and parse it properly. The current parse would make man the verb,
+that is to man something. However, when you do a word tokenize
+on the sentence do a post stack, you'll get man as a noun,
+and old as an adjective. And this particular sentence
+is not grammatically correct, there's no parse string for
+this structure. Sometimes even well formed sentences
+that have parse structures may still be meaningless, so there is no
+semantics or meaning associated with that. The great example is,
+colorless green ideas sleep furiously. When you read this you can see that
+the sentence structure seems right, but it does not make any sense,
+meaningless. And that is because when you do, when you find out that the word
+tokens will be word tokenize and the part of speech tag on that, you will
+see that it doesn't really do a good job, it says, colorless is a proper noun,
+and then green is an adjective, rather than saying colorless and green are
+both adjectives, there is an error there. But even if you remove the word colorless,
+say, green ideas sleep furiously,
+you would have the perfect post tag there. Green is an adjective, ideas is a noun,
+sleep is a verb, and the you have furiously, that is an adverb, and
+this particular order is perfectly fine. But it still doesn't make
+any sense meaning wise. So there are many more layers of
+complexity in language that parse trees and apart of three stacks
+don't address so far, okay? So to conclude all of the take home
+concepts here, we looked at POS tagging and saw how it provides insight into
+the word classes, and word types. In the sentence, parsing the grammatical
+structures helps derive meaning. Both tasks are difficult, and there is linguistic ambiguity that
+increases the difficulty even more. And you need better models, and you can
+learn those using supervised learning, NLTK provides access to these tools and
+also has data, in terms of tree bank for example, that could be used for training. Next module, we're going to go into more detail
+about how do you train these models, how do you build a supervised method,
+and supervised technique, for these. But that's for another time.

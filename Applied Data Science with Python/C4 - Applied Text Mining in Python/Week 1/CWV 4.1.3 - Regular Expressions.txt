@@ -1,0 +1,153 @@
+In this video, we are going to
+talk about regular expression. When you're processing free-text,
+we come across a lot of places where regular expressions or
+patterns play a role. So, let us take an example. This is one of the tweets from the UN
+spokesperson's account and this is ethics are built right into the ideals
+and objectives of the United Nations. We have seen this earlier today and
+then you have #UNSG. There is another little piece of text like
+@ New York society for ethical culture. There's a URL there and
+then two callouts to @UN and @UN_Women. So from this tweet,
+if you were find out all callouts and hashtags, how would you do it? First, of course, you have to split it
+on space to get these individual tokens. So, you have that. So now, you know that you have
+all of these individual tokens. And now, this is in a better position
+to find out where callouts are or hashtags are. Why don't you give it a try? So when you're finding out specific words,
+such as callouts or hashtags, you may want to see
+what patterns these hold. So for example, hashtags start with
+the hash symbol or the pound sign. So, you can use something like this. You can say, w for w in text11
+if w.startswith the hash symbol. Great, you get #UNSG. That's exactly what you want, great. What about callouts? Same with hashtags, you can say, callouts are strings that start with
+the symbol at three, the @ symbol. So you can say, w for
+w in text11 if W starts with @ and you'll get the response as @UN_Women. But there is also this @ separately. Recall that there was this @newyorksociety
+and that @ as a separate token comes in. That's not really a callout. So, this doesn't really work. So now, what should we do? It's not sufficient to say that
+something starts with the @. The callouts are tokens that begin with @. They have to follow
+that up with something. So for example, these are valid
+callouts @UN_Spokesperson or @katyperry or @coursera. So what you can see is that it's
+something that has to match after @ like alphabets or numbers, or
+special symbols like the underscore sign. So what you're saying is the pattern
+is @ and then capital letters or small letters and number and
+underscore occurring one, or more times. That is the pattern that defines callouts. So, let’s try this one out. So you have the text, text10 and
+then you can split it on space and then you do just check for
+first character to be @. So when you sa, text for
+all words in text11 that start with @, you get @ and @UN and @UN_Women. But if you first use a regular
+expression and import re, that is import a regular
+expression package and say, all words where words
+in text11 if re.search. That means if you can search and
+find this pattern @ and then A to Za. A to Za-z0-9_ occurring
+multiple times in the word, then that is a valid token and that would give you the two
+callouts from that tweet. So, let's look at this callout
+regular expression in more detail. We said, @ and
+then we had this square bracket. That's at A to Za to z0 to 9_. And then after the square bracket,
+we had a +. What does that mean? So it says that you have
+to start with an @ and then just to follow one or
+more times, that's what the + means. One or more times. That's at least once, but may be more of something that is
+in between the square brackets. And that the one that was in between
+the square brackets is any alphabet, uppercase or lowercase or
+a digit or underscore and any suspicious symbol that is
+allowed in a callout expression. So in this regular expression,
+you saw that we used some notation and meta-characters that we're
+going to define now. So in regular expressions, a dot is a wildcard character
+that matches a single character. Any character, but just once. When we use the character symbol,
+that indicates the start of the string. So even though not all strings start
+explicitly the character sign, this character matches an empty
+character at the start of the string. The counterpart of that is dollar symbol
+that represents the end of the string. So if your string has a backslash end,
+the dollar comes after the backslash end. So, there's a backslash end and a dollar. Dollar is truly the end of the string,
+the way it represented. The square brackets matched one of
+the characters that are within the square bracket. You have a to z, for example, within square bracket that rematch one
+of the range of characters a, b up to z. There are some changes there when you
+have square brackets, but caret abc. It means something different. It means it matches a character
+that is not a or b, or c. So, it's kind of the inverse of it. So when I said that opening bracket and
+closing square bracket indicates that it matches any other characters within it,
+this particular expression with a character the star doesn't mean that it
+matches a character, an a or a b or a c. But it says, explicitly that it is. It matches any other character,
+but a, b or c. A or b would match either a or
+b where a and b are themselves strings. You can use this normal braces to say,
+scoping for operators. You'll use this backslash as
+escape character, especially for special characters like \t and \n and
+you could use special character symbols. Just like \t is for tab,
+you have \b to match a word boundary. You have \d to match any digit,
+any single digit 0 to 9. That's included into
+square bracket 0 to 9. \d is any non-digit,
+anything that is not 0 to 9. So, that's the equal interpretation there, square brackets not 0 to 9. \s is any whitespace character. That is matches space or a tab, or a new line, or \r and \f and \v. Capital S. So, \S is matches any non-whitespace
+character just the way d and capital D are opposites of each other. S and
+capital S are opposite of each other. Same way you have w. \w matches any alphanumeric character whereas \W matches any non-alphanumeric character, then we look at repetitions. When you have star,
+that says that anything that occurs before that matches zero or more times. So, it may not happen at all or
+it can happen multiple times. Once, twice, thrice or so on. If it's plus, it has to happen once. At least once, but
+it can happen more than once too. If it's a question mark,
+it means that it has to match once or does not match at all. So, it matches zero times or once. And now, you have these curly braces. So curly braces and n, it means it matches
+exactly n times where n is more than 0. If you have curly braces three, it means that this has to match thrice and
+only thrice. If it's n comma,
+it means it's at least intense. And if it's comma n,
+it means it's most intense. If it's a combination of
+both of them m comma n, it means that it has to match at
+least m times and at most n times. Let's look back at the callout expression. When we use this callout
+expression using this re.search, we do get @UN, @UN_Women. But then if you say for
+w when re.search that \w actually matches A-Za-z0-10_, so that would also give you the same answer, any alpha numeric symbol character. Let's look at some more examples. If you were to find some special
+characters, for example, if you have the text Ouagadougou. Again, the capital city of Burkina Faso. And in order to find all vowels,
+you'll say, re.findall and the regular expression in
+square bracket is a, e, i, o, u and that will give you
+all the vowels that are there. Same way, if you are to find out
+everything that is not a vowel. That's a consonant,
+then you could use the carrot a, e, i, o, u option and
+that will give you g, d and g. These are the only three
+consonants in Ouagadougou. So now, let's take a look at a special
+case to find regular expressions for dates. Dates are unique in the sense that they
+have multiple variants in free-text. Let's take a date off the top of my head. Let's say, 23rd October 2002 and look at
+variants of how you could write this date. You could write as date,
+month and the year. Either with a hyphen or
+the slash with two digits for the year other than four. If you are in the US, then you
+would use month, date, year format. You might use words for October rather than the number ten. So, 23 Oct 2002 or 23 October. And again, change the order where
+you have month first before date. So, you can see that there are so
+many variants and top on to other right a regular
+expression to match it, and write something like this where you
+have two digits with a slash or a dash, and then four digits that
+are just going to match some of them. Suppose you have all of these variants,
+and you use just the first four. You could use this regular expression
+of two digits followed by a slash and a dash, two digits,
+slash and a dash then four. And that will give you three of them, because it doesn't match the one that
+said, yours could be two digits. So then, you have to fix that. So you say, it could be two digits or four
+digits and then it will match all four. And then you could say, the dates it so
+happen in this its October. So, it's 10. What about September and it would be nine? You have to kind of address that
+as well or third of October. That will be just one single digit for
+that. So in general, you have to have one or two
+characters, sorry, digits for the date. One or two digits for the month and
+two, or four digits for the year. That will give you all of them here, but that's more children
+then what you had up here. Now let's look at the other variance
+where you have October written out, spell it out. Then, you have to say that you have to
+have two digits of a start, a space and then Jan, Feb, March,
+April as in J-A-N and F-E-B and so on. One of them occurring, so you use this
+byte symbol to indicate disjunctions between them and then you have four
+digits at the end for the year. That will match just October. What happened? Shouldn't it match the whole thing? It did match the whole with the date and
+so on. Well, the difference here is that
+this bracket sign has two meanings. In regular expressions, when you use
+the bracket, it also indicates scoping. So it says, I want to pull out only
+something that matched that part. It doesn't match the whole string,
+but it pulls out and gives you back only the thing that matched
+between Jan, Feb, March up to December. That's what gave me October as O-C-T. For you to find and give it a test and you
+say, this is a scoping operating operator, but don't pull out just
+what you matched here. You use this question mark colon special
+character sequence to indicate that. So when you use that, you'd get
+the entire string 23 October 2002. Great, why didn't others match? Because the next string was Octobers,
+spell out completely. We didn't have that and the other two had
+a comma there, and we didn't have that. So if we were to somehow say that we
+are going to use the same string, but then we can exchanged Oct to
+October by saying, it's starts with these three characters, but
+then it could have a to z multiple times. Why not a plus there? Because May is there with just May. There's nothing that follows may. So you'll have that will match
+both of them between Oct, 2002 and 23 October 2002. And then finally,
+we have the two remaining cases where you say that I don't necessarily
+have to have data to start. I might have data at the end. So the first occurrence of date is you
+have a question mark after that and then you add a date option at the end,
+and then a year after that. So you have a question mark,
+colon, \d(2), comma. Calculating both at the start and at the end before you have the year \d(4),
+originally. That will match all four. You see that when you're
+building the regular expressions, you are to keep working on them to finally
+get the pattern that you'll really want. Note that all of these did not
+handle this third October case or 23rd of September case, so you have to do
+all of that with one or two Digits for the date and the month. So, that has to change. And in fact, you may also want
+to do a \d(2) comma 4 for the year if that is a pattern
+that you want to fix. Great.
+So, what did we learn? In this video,
+we learned about regular expressions. We saw what they are. Why they are useful. What are the regular
+expression meta-characters and how do you build a regular
+expression to identify dates. But in general, to identify any particular
+pattern string that you want to identify. In next videos, we are going to see more information about how do you handle other
+variance of text that you're using.

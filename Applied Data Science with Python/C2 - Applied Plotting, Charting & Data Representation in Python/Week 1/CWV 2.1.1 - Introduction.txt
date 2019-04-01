@@ -1,0 +1,59 @@
+Welcome to the second course in the
+Introduction to Applied Data Science with Python specialization. In the first course we looked,
+primarily, at how to manipulate data, including loading data from
+structured delimited files, such as CSVs, cleaning the data with
+Python pandas, and NumPy libraries, and transforming data using functions,
+such as apply, aggregate, map, and pivot. If you don't feel you have a solid
+understanding of the pandas toolkit, then I would invite you to go back and
+review that course content. The main topic of this course is
+understanding how to communicate data more clearly to the various stakeholders
+who are interested in the data. And there are many different
+stakeholders to whom you might be interested in using visuals to reach. For instance, you want to share unbiased,
+representations of data with peer data scientists who are able to make
+their own inferences and interpretations. But you'll also want to be able to share
+stories about the data with managers and executives who might be familiar
+with domain but are looking for specific actionable insights. Finally, you'll also want to be able to
+communicate like a journalist to a broad population who knows very little
+about your particular data and needs to understand not only an overview
+of the phenomenon you are describing but also the limitations of
+the approaches you have used. This course is about specific techniques
+which are part of a broad subject of information visualization. Referred to an infovis for short, this is a field that has rapidly developed
+over the past 20 years, as computing power has made it possible to build compelling
+visual and interactive graphics quickly. And while the use of visualizations to
+impart knowledge of data has been around for centuries, the last 20 years have seen
+the development of important theoretical basis for best practices in displaying
+information to various audiences. And in this course,
+we're going to focus on those. In this first week of the course, we're
+going to touch on some of those theories and best practices, and talk about
+fundamental thinkers in the field. In particular,
+Alberto Cairo and Edward Tufte. We'll go through some examples
+of excellent and not so excellent visualizations. And develop a language for speaking about how we might make
+meaningful visualizations ourselves. This portion of the course will be largely
+lecture based with several readings and peer reviewed assignment
+at the end of each week. In the second and third week of
+the course, we'll dive into the de facto Python library for creating charts and
+graphs, matplotlib. Now matplotlib isn't the only way to
+create visual artifacts in Python, but it's the basis for some emerging new
+web tools such as C-Born and Bokeh. And acts as a solid foundation for
+our discussions. The majority of these weeks will be spent
+actually working on assignments with a few lectures to share an overview
+of how the toolkit itself works. And you'll be expected to take messy
+raw data, process it using pandas or other suitable techniques and render it
+into a meaningful, explanatory image. And again, if you're not comfortable yet
+using pandas, I would encourage you to go back to the first course in this
+specialization and review those videos. The assignments for weeks two and
+three will be largely peer graded. Finally, the course will
+culminate with a small project, similar to the first course. In this project, you will be given
+a new visualization technique and you will be asked to extend the matplotlib
+code base to enhance its functionality. This is a critical step in your
+journey as a data scientist. To go beyond using tools off the shelf and
+instead be able to modify them to support new ways of
+understanding data and problems. This course is very similar to the first, except the evaluation
+is largely peer review. The lectures will only guide you so
+much in completing the assignments. You'll need to know how to ask questions
+in the discussion forums of your peers. And seek out new information through
+web searches and Stack Overflow. And again,
+Stack Overflow is tagged specifically for questions about matplotlib. So I'd encourage you to
+use that resource as well. Finally, for this course, I expect that you are familiar with
+all of the content from Course 1. I'm looking forward to this
+next course in specialization. Let's get started.

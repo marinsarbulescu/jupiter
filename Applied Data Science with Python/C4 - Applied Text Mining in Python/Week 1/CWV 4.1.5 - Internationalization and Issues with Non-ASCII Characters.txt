@@ -1,0 +1,125 @@
+In this video we are going to
+talk about internationalization. The world is a mix of multiple language. We talk about English almost all the time,
+but English is going more and more as a minority language
+over the Internet. English is very well encoded using ASCII. ASCII stands for American Standard Code
+for Information Interchange. And this was the encoding scheme
+that captures all characters. It's 7-bit long, so you have 128 valid characters or
+valid codes that you could use. And in hexadecimal form it
+ranges from 0x00 to 0x7F. So if you think about it it takes
+the seven bits out of eight bits and uses this lower half of
+the eight bit encoding. This model and
+this encoding scheme has been in used for quite sometime in start
+of computing really. It includes alphabets both uppercase and lowercase, it has all ten digits,
+all punctuations. All common symbols like brackets for
+example or percentage sign and the dollar symbol,
+and the hash symbol. It has some control characters,
+some characters to describe let's say end of the line or the tab or some other
+control characters that are needed to see. A paragraph ends, for example,
+is different from a line end. And it has worked relatively well for
+English typewriting. I say relatively because even in English
+it doesn't really capture everything. Let's think about diacritics marks,
+resume versus resume. If you ignore the diacritics
+they are the same word, they have the same six
+characters R-E-S-U-M-E. But the e is different in resume and that is not ready encoded
+in the ASCII schema things. And this is not the only one. Now e with an i and an umlaut on top
+of it is another example of that. So is cafe or
+something with a diacritic on e. It's fairly common in
+other languages though. And as we have seen that English is not
+necessarily the majority language anymore, you have to be more sensitive
+to those changes as well. So for example the names of cities,
+Quebec or Zurich. Or the names of organizations, like the Federation Internationale
+De Football Association, or FIFA, which is the leading Football Association. But then you have other languages that
+have completely different encoding scheme, completely different characters,
+like Chinese, or Hindi, or Greek, or Russian. But then you have languages of music. And you have the musical
+symbols that are also relevant, especially if you're using
+the digital form to now create music. And you have to somehow
+encode the music symbols. And then you have the very
+famous emoticons. You have the smiley faces and
+in fact now, many, many more emoticons that are available. And all of these need to
+be included in some way. So what used to be enough for
+English, let's say, barely enough for English, is definitely not enough when
+you're including diacritic marks and the multitude of languages
+that are available. In fact there are quite a few different
+written scripts that need inquiry. For example Latin which
+is basically English is 36% of data and over 2.6 billion people. 36% of people, sorry,
+use Latin-based languages. And when I say Latin-based languages,
+I'm including Italian in it because it's a same type of language as French, and so
+on, if you kind of ignore the diacritics. But then there are completely
+different written scripts in Chinese. Or Devanagari that is the basis for
+a lot of Indian languages. Or Arabic or Cyrillic and Dravidian which is another Indian
+language in the south of India. So this map kind of shows you
+how different scripts are used across the world. You have a lot of character
+encodings that have developed now to somehow encode them in computing schemes. So you have the IBM EBCDIC,
+which is an 8-bit encoding. You have Latin-1 encoding, just slightly
+different from the ASCII encoding. You have individual country
+specific standards like JIS for Japanese Industrial Standards and
+the CCCII that's the Chinese Character Code for
+Information Interchanges like ASCII. You have the Extended Unix Code, EUC and there are numerous other
+national standards. But then there was a need to standardize
+it and bring it all together and that's what Unicode and
+UTF-8 encoding does. As you'll see there have
+been a lot of interest in converting the pages to UTF-8. The ASCII only encoding has
+significantly dropped and consistently dropped over the last 10,
+12 years. While UTF-8 was not really that
+popular until 2004 and 2006. And then just shot up, and is by far the most common encoding
+used on webpages currently. Well, so what is Unicode? Unicode is an industry standard for
+encoding and representing text. It has over 128,000 characters from
+130 odd scripts and symbol sets. So when I'm saying symbol sets, I include
+Greek symbols, for example, or symbols for the four suits in a card deck and so on. It can be implemented using
+different character endings but UTF-8 is one of them and,
+by far, the most common one. UTF-8 is an extendable encoding set. It goes from one byte up to
+four bytes You have UTF-16 which uses one or two 16-bit codes. The UTF-8 is 8 bit sets,
+so 8 bits is a byte, so you have 1 byte as a minimum and
+then it goes up to 4 bytes, while UTF 16 is a 16 bit sets one or
+two of them. UTF-32 is one 32 bit encoding, so even though you have all of these
+kind of using up to 32 bits, UTF-8 kind of uses one big 32-bit
+encoding for all characters. So what is UTF-8? UTF-8 stands for
+Unicode Transformational Format- 8-bits, to distinguish it from 16 bit and
+32 bit UTF formats. You have variable length encoding,
+tt goes from one byte to four bytes. And it is also backward
+compatible with ASCII. So for example, all ASCII codes that were
+seven bit codes and used the leading zero in ASCII are the same codes in UTF-8. So all those that where encoded
+using ASCII use one byte of information in UTF-8 and uses one
+byte that is similar to what ASCII says. But then ASCII sort of UTF-8 because
+it can be extended to four bytes. It has lot of other schemes to kind of
+do that and keep on extending it. UTF-8 is the dominant character
+encoding for the Web and in fact, it is inherently handled well,
+it's default in Python 3. If you are one of those who are using
+Python 2 then you have to give this statement in the start of your Python
+script that tells the interpreter that the coding is,
+that you are using is UTF-8. So let's see an example. I see the word Resume in both Python 3 and
+Python 2. So if you enter the same
+way of text1 as Resume and you find the length of that word. In Python 3 you are going to see
+that it is 6 characters long, or I should say it's 6 characters, yeah. While in Python 2 you get 8. So why is that? Let's see the text itself and
+you'll see that for Python 3 kind of gives
+back the word resume. But then in Python 2,
+if you print it out you will see that you have these special hexadecimal codes. So there's a hexadecimal code
+c389 in place of the diacritic e. Or again you have the c389
+at the end of the word. So you would know that these two symbols
+together the c389 is a representation of diacritic e. And it is represented as two
+separate bytes in Python 2. So specifically if you want all
+of these characters you're going to see that it is the six characters
+come out very well in Python 3. While in Python 2 you're going to get
+them as eight separate characters. So c3 is one character and
+a9 is one because it's one byte each. So how do you do it? How do you handle UTF-8
+strings in Python 2? You're going to use the u
+before you write your resume. And that would then give the length as 6. It'll tell the interpreter in
+a way that you have this other Unicode string, a UTF-8 string. And if you actually dubbed individual
+characters you're going to see that you get R. But then you have the xe9 and
+then you have these characters again. That hexadecimal called E9 is the Unicode equivalent of the diacritic e. So the take home concept here is that
+there is a lot of diversity in text, especially text that you will see. And hence it is important for
+us to recognize that and for computer systems and
+encodings to capture that. ASCII and other character encodings
+who were used extensively earlier and because there was no standardization, the UTF-8 encoding kind of became popular
+and is used almost exclusively now. And it's the most popular in coding set. We saw that in Python 3,
+it is handled by default, so you don't have to do anything specific. While for Python 2 you may
+have to do something to let the interpreter know that you're
+using the UTF-8 encoding.
+
+Regular Expressions
+Regular expressions documentation in Python 3
+Tips and tricks of the trade for cleaning text in Python
+https://stanford.edu/~rjweiss/public_html/IRiSS2013/text2/notebooks/cleaningtext.html
+https://www.analyticsvidhya.com/blog/2014/11/text-data-cleaning-steps-python/
+http://ieva.rocks/2016/08/07/cleaning-text-for-nlp/
+https://chrisalbon.com/python/cleaning_text.html

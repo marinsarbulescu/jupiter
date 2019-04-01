@@ -1,0 +1,254 @@
+Hello, this week, we've been looking at networks as dynamic structures
+that change over time. In the past two videos, we looked at
+different models of network evolution. That given the dynamics for how a network
+evolves from the beginning to the end. Today we're going to look at a related
+problem which is given a fixed network, can we predict how this network
+is going to look in the future. And more specifically, we're going to be
+looking at the link prediction problem. Which is given a network, can we predict which edges are going
+to be formed in the future? This problem has a lot of applications,
+for example if you're Facebook and you want to create a friend
+recommendation algorithm or a friend recommender to tell
+people who they should friend. Then, basically you're
+solving this problem. You're looking at the current Facebook
+network and you're trying to predict which new friendships are likely
+to form in the future. Let's take this small network as an
+example and let's try to ask the question, what new edges are likely to be formed? And more specifically,
+let's formulate the problem in this way. Let's say that we take
+a specific pair of nodes and we want to assess whether or
+not they're likely to connect. What we're going to do today is we're
+going to go over several measures, seven of them,
+to try to make this assessment. To try to decide whether a specific
+pair of nodes are likely to become friends or not. And so, we've actually thought
+about this kind of question before. If you remember, we talked about triadic
+closure which is the tendency for people who share connections in a social
+network to become connected themselves. So triadic closure actually
+gives us a hint for what the first measure that
+we're going to look at is. And that is very simple measure, just look at the number of common
+neighbors that the two nodes have. Now this is very simple, but let me define
+this measure to introduce some notation. So we're going to say that the number
+of common neighbors of nodes X and Y is going to be the size of a set, which
+is the intersection of the sets N(X) and N(Y), where N(X) defines the set
+of neighbors of the node X. And so for example,
+the common neighbor measure for nodes A, C in this network is going to be 2 because
+nodes A and C have two common neighbors. That is node B and node D. So A, C have two common neighbors. In network X,
+we can use the function common neighbors, which takes in as input
+the graph to nodes. And it outputs an iterator of all
+the common neighbors of the two nodes. And so here, what I'm doing is I'm
+creating a list of tuples which have the two nodes and
+the number of common neighbors. And I'm only including the nodes that
+are not connected with each other. The ones that don't have an edge between
+them by using the function non_edges. And if I sort this list, we can see the pairs of nodes that have
+the most common neighbors between them. And we see that the pair A,
+C has two neighbors in common, there are many others that have
+only one neighbor in common. And then many others that have
+zero neighbors in common. And so if we start to compare
+between different edges, for example we look at the pair A,
+G and the pair H, I, and ask, which one of these two is more
+likely to become connected? Then by looking at the number of common
+neighbors, we actually can't tell, because both of these have
+exactly one neighbor in common. And so let's look at other measures that
+may potentially give us different answers for these particular pairs of nodes. The next measure we're going to look
+at is called the Jaccard coefficient. And what it does is that it looks at
+the number of common neighbors but it normalizes it by the total number
+of neighbors of the two nodes. So the way that we write it down is we say
+the Jaccard coefficient of nodes X and Y is going to be the fraction of
+the number of common neighbors. That's in the numerator, so
+it's the intersection of the sets N(X) and N(Y), divided by the number
+of neighbors of X and Y which would be the union of N(X) and
+N(Y). And so here, the pair of nodes of A and
+C, have a Jaccard coefficient of one-half because they have two
+common neighbors, B and D. And they have four total neighbors,
+nodes B, D, E, and F. And so that's 2 over 4 which is one-half. In network X, we can use the function
+jaccard_coefficient which takes as input the graph and it outputs an iterator
+of tuples which have the two nodes and the Jaccard coefficient of the two nodes. But it only outputs the pairs of nodes
+that are not already connected, so the non edges. So if we sort this list,
+we now find that I, H have the highest
+Jaccard coefficient of 1. And that's because I and H are both connected to a single
+neighbor which is a common neighbor G. Whereas the nodes A and G,
+they have one common neighbor, but they have more neighbors that are in
+the union of the neighbors of A and G. And so, therefore,
+they have a lower Jaccard coefficient. The next measure is called
+the Research Allocation Index. And the intuition behind it is that it
+considers a fraction of a resource for example, information or something else
+that a node can send to another node through their common neighbors. And so first, let me tell you how
+it's defined mathematically and then I'll tell you a little bit more about
+what the intuition is behind the measure. So the Resource Allocation index of
+the nodes X, Y is going to be the sum over all the common neighbors of X and
+Y of one over the degree of the nodes. So in this case, if X and
+Y have a lot of common neighbors and they're going to have a large
+Resource Allocation index. But if they have a lot of
+neighbors that have low degree, then they're going to have an even
+larger Resource Allocation index. Now what's the intuition behind this? Let's consider two nodes X and Y,
+and let's say that we're measuring the Resource Allocation index
+between these two nodes. And let's say that they have
+exactly one common neighbor, Z. Now imagine that X is trying to
+send to Y a unit of something, let's say information or something else. And is going to do so by passing it for X to Z and then hoping that
+Z will pass this unit to Y. But actually what Z does is that
+when it receives this unit from X is going to distribute this unit
+evenly among all the neighbors of Z. Then in that case, well Y is only
+going to get a fraction of that unit. And which fraction depends
+on what the degree of Z is. So if Z has degree N, then Y is only
+going to get 1 over N of that unit. And so if Z is the only common
+neighbor of X and Y, and Z has a lot of neighbors,
+a very large degree. Then X is going to be able to send less
+to Y, than if Z had a very few neighbors. And so that's why this research
+allocation index penalizes pairs of nodes that have common neighbors that
+themselves have lots of other neighbors. So for example, when we measure the
+Resource Allocation index of nodes A and C, we would have one-third for node B. because node B is the common neighbor
+of A and C and has degree of 3, plus 1 over 3 which is for node D, which also has degree 3 and
+it's also a common neighbor of A and C. So the Resource Allocation index of A,
+C is going to be two-thirds. We can use the function of
+Resource Allocation index to compute the Resource Allocation
+index of all pairs of nodes that are not connected by an edge
+already in the graph. And if we sort it, we can see the Resource Allocation
+index of all pairs in this network. And if we look at the two edges
+that we're being kind of following, we see that in this case, A, G has a higher Resource Allocation
+index than I, H. And that is because I,
+H has a common neighbor which is G. But G has a high degree,
+has a degree of four. Whereas A, G,
+they're common neighbor is E, and E has a slightly smaller degree of three. So, that will give A, G a larger
+Resource Allocation index than I, H. The next measure is called
+the Adamic-Adar index. Which is very similar to
+the research allocation index. The only difference is that rather
+than dividing by the degree, it divides by the log of the degree. So in this case, the Adamic-Adar index for
+nodes A, C instead of being 2 over 3 is going to be 1 over the log of 3
+plus 1 over the log of 3, which is 1.82. And there's a function for it too that you
+can use in network X is Adamic-Adar index. And again, we can compare A,
+G and H, I but in this case, it's going to be very similar to
+the Resource Allocation index. And so all we did was to put
+the log in the denominator. Next, measure 5 is going to be
+the preferential attachment score. So, if you recall, the preferential
+attachment model has the feature that nodes that have very high degree
+are more likely to get more neighbors. And so, the intuition behind
+this measure is that, well, if I'm looking at a pair of nodes and
+they both have a very high degree, then they're more likely to be
+connected to each other in the future. And so, what it does, is very simply, to take the product of
+the degree of the two nodes. And so, it's very simple. The preferential attachment score of X,
+Y is going to be the product of the number of neighbors of X,
+times the number of neighbors of Y. And A, C would have a preferential
+attachment score of 9. In network X, we can use
+the preferential_attachment function to compute the preferential attachment
+score over all the pairs of nodes that are not connected
+by an edge already. And here we can look at two edges that
+we've been following, A, G and H, I. And we see that A, G has a higher
+preferential attachment score than I, H, and that's because A has a degree of 3 and
+G has a degree of 4, which makes the preferential
+attachment score of 12. Whereas, I and H both only have one
+neighbor and so they have a score of 1. Okay, next,
+we're going to look at two other measures, that take in to account the community
+structure of the network. So in cases where you have a network and
+on top of the network, you have some knowledge
+about different communities. And here we'll think of
+communities as sets of nodes and we'll make the assumption that each
+node belongs only to one community. So one example is if this network was,
+for example, a network of communication
+among employees in a company. Then you may think that the department for
+which an employee works for would define a community. So for example, there's HR, and
+there's legal and so on, and so you could imagine thinking
+of those as communities. So if you had that type of structure,
+then you could use different measures for determining whether two nodes are likely
+to connect to each other or not. So in this case, let's assume that
+these network has two communities. So, these are the two communities. So there's A, B, D and
+C belong to Community 1, and the other nodes belong to Community 2. And what these two measures do, is they make the assumption that if two
+nodes belong to the same community, and they have many neighbors that also
+belong to the same community. Then they're more likely to form an edge,
+than if they had neighbors that belong to different communities, or if the two nodes
+themselves were in different communities. That's sort of the basic
+assumption that we make. And so this allows us to
+compute new measures, and so let's go over two of them. So the sixth measures that we are going to
+look at today is the number of common neighbors. But with a bonus for neighbors that
+belong to the same community as the two nodes we're looking at. So this is called the Common
+Neighbor Soundarajan-Hopcroft score. And if we're looking at nodes X and Y is simply going to be
+the number of common neighbors. So the size of intersection of N(X) and
+N(Y), plus some bonus, which is going to be the sum over all the
+common neighbors of this function, f(u). And f(u) is simply an indicator that
+tells us whether the u, which is a common neighbor of X and Y, belongs to
+the same community as X and Y, or not. And if it does, then it's a 1. If not, it's a 0. So it just simply gives a bonus for the common neighbors that belong
+to the same community as X and Y. And so for example, if we look at nodes
+A and C, their common neighbors are B and D, and
+they all belong to the same community. So A and C would get a score of 2 for having two common neighbors plus
+2 bonus points, so we get 4. Nodes E and I would have a score of 2
+because they both have a common neighbor, namely, G. And it belongs to the same community. So it would get a bonus point for
+a total of 2. But if we look at the edge A,
+G for example, they have one common neighbor, namely, E. But A and G are not in the same community. So E is not in the same community as A and
+G. Therefore A and G have a score of just 1. Now to use this on network X, we first have to tell network X which
+communities each node belongs to. So here, we're adding an attribute
+to each one of the nodes named, community, that tells which
+community the node belongs to. So for A through D, we'll say it
+belongs to community 0, and for the other ones it belongs
+to the community 1. And now we can use the function
+cn_soundarajan_hopcroft(G) which outputs an iterator of the tuples
+with the nodes and the score for each one, each pair,
+that is not already connected by an edge. And we can sort it and
+find which nodes have the highest score. And if we look at the two edges that we've
+been following, then we find that I, H has a score of 2, because their common
+neighbor G belongs to the same community as A do, whereas A, G has a score of 1. The last measure we're going to look
+at is a measure that is similar to the Resource Allocation index but it only
+takes into account nodes that are in the same community as the two
+nodes we're looking at. So if we're computing this
+measure which is called the Resource Allocation
+Soundarajan-Hopcroft score. And this is after the researchers that
+came up with this measure of X and Y. Then what we do is we sum over
+all the neighbors of X and Y. And rather than summing just one over
+the degree of the nodes of the common neighbors like we did in the standard
+Resource Allocation index. We now have this f(u) in
+the denominator of the fraction. And this function f(u) again
+is the same as before is 1, if u belongs to the same community
+as X and Y, and 0 otherwise. So in the case where you have a common
+neighbor that does not belong to the same community as X and Y,
+then that neighbor is not contributing anything to the sum
+because you have a 0 in the numerator. And so if we look at some examples for
+the nodes A and C, we would find that, well, because both of the neighbors B and
+D belong to the same community as A, C. Then we have the same score as we did
+before, and 1 over 3 plus 1 over 3, which is two-thirds for
+this Resource Allocation index. And if we look at for
+example, nodes E and I, we find that well,
+they have one common node which is node G. And node G has a degree of 4,
+so it has a score of 1 over 4 because G belongs to
+same community as E and I. However, if we look at two nodes that are
+not in the same community like A and G. Then they would have score 0 because their
+common neighbor, while they have one, namely E, belongs to a different community
+as at least one of the two nodes. And so, it doesn't contribute
+anything to the sum, so these two don't get anything in the sum. So we get a score of 0.
+We can use this function in network X, ra_index_soundarajan_hopcroft to compute
+the scores of all the non edges. And here, we find that I, H has a score
+of 0.25, whereas A, G has score of 0. Again because A, G, their common
+neighbor is not in the same community, at least one of A and G. And so in this case again,
+we find that I, H has a higher score. Okay, so these were the seven measures
+I wanted to talk about today and I want to point out two things. One, none of these measures actually
+tell you whether or not you should predict that a particular edge is
+going to come up in the future or not. It just gives a score that is supposed
+to give you a sense for whether or not these two nodes are likely to connect. The second thing is that different
+measures can give you different scores, right? So for example, we saw that some
+measures would give the edge H, I, a higher score that A,G and
+some measures would do the opposite. And so these measures aren't
+necessarily consistent with each other. So if you're actually trying to
+solve the link-prediction problem, typically what would happen is that you
+would use these measures as features. And then you would use a classifier, if
+you have some label data, you would train a classifier and use these measures as
+features in order to make the prediction. And so in summary, we talked about the link prediction
+problem which says that given a network, we´re tying to predict which edges
+are going to be formed in the future. And to do so, we've talked about the five
+different measures, the number of common neighbors, the Jaccard coefficient, which
+takes the number of common neighbors, but normalizes by the total number of
+neighbors that the two nodes have. The Resource Allocation index which
+is thinking along the lines of, if I know I needed to pass information or
+pass a resource to another node through their common neighbors,
+how much of that would actually get there? The Adamic-Adar index which is similar
+to the Resource Allocation index, but it takes the log in the denominator. And the preferential attachment score
+which bases the score on the idea that in preferential attachment, nodes with high
+degree tend to accumulate more edges. As well as two measures that
+require community information. So if you do have community information on
+your network, then you can use these two, and they're very similar
+to other ones we saw above. We have one that takes the common
+neighbors and it gives a bonus for the common neighbors that are in
+the same community as the two nodes. And then the Resource Allocation
+one which only considers common neighbors that are in the same
+community as the two nodes. And this is all for this video,
+I hope to you see next time, thanks.
+
+Read chapters 2 and 20 from "Networks, Crowds, and Markets: Reasoning about a Highly Connected World" By David Easley and Jon Kleinberg. Cambridge University Press, 2010 for a more in-depth take on the Small World Phenomenon.
+
+Chapter 2: http://www.cs.cornell.edu/home/kleinber/networks-book/networks-book-ch02.pdf
+
+Chapter 20: http://www.cs.cornell.edu/home/kleinber/networks-book/networks-book-ch20.pdf

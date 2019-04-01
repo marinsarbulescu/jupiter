@@ -1,0 +1,158 @@
+Hello, today we're going to talk about
+another way to find central nodes in the network. Just like PageRank, this way was also developed in the context
+of how a search engine might go about finding important web pages given a query
+using the hyperlink structure of the web. So the first step will be to
+find a set of relevant webpages. So for example, web pages that contain the query string
+in the text of the web page or for some reason the search engine thinks these
+might be an important page to look at. So these are potential authorities, potential pages that are important given
+the query that the user submitted. This will be called the root set. And so let's say in this
+example that nodes A, B, and C are these potential authorities,
+this is the root set. And the next step will be to find
+all the web pages that link to any page in the root set, and
+these pages will be potential hubs. So hubs are pages that are not
+themselves necessarily relevant to the query that the user submitted, but
+they link to pages that are relevant. So they're pages that are good at
+pointing at things that may be relevant. And let's say that in this
+example the nodes E, F, G, D, and H are these pages that point to at
+least one of the pages in the root set. This whole set of nodes,
+whatever it was in the root and anything that points to something in the
+root, is going to be called the base set. And we're going to consider
+all the hyperlinks that link any node in the base set to any
+other node in the base set. So there may be many other
+edges in this network and we're going to consider them all. And so this is the network
+that we're going to use in order to find the important web pages. So the difference between this new way
+hubs and authorities and PageRank is that rather than taking the full network, we're
+starting with a subset of the network. Again, looking at first just the root set,
+the web pages that may be relevant, and then any page that links to it. And so these will be just the subset
+of the full network of the web. Now we're going to run the HITS
+algorithm on this network. And the HITS algorithm just like PageRank
+works by computing k iterations and keeping track of the score for every node. Now, the difference is that the HITS
+algorithm is going to keep track of two kinds of scores for every node,
+the authority score and the hub score. The first step is to give
+every node an authority and a hub score of 1, and then we're
+going to apply two different rules. These rules are going to be
+similar to the rules that we used when we computed PageRank, but again now we're going to have to
+keep track of two different scores. So the first rule is going to
+be the Authority Update Rule, which says that each node's authority
+score is going to be the sum of the hub scores of each node that
+points to that node. And then the other rule
+is the Hub Update Rule, which is sort of the symmetric thing. So each node's hub score is going to
+be the sum of the authority scores of each node that it points to. And then we're going to have to do some
+normalizations because these scores are going to keep growing and growing, so at every iteration we're going to
+normalize the hub and the authority score. And so, for example, the way you normalize
+the authority score is you take each node's authority score, let's say j,
+and you divide the authority score of j by the sum of all the authorities
+in the whole network. And then we're going to repeat
+this process eight times. Now, this might seem a little
+abstract at this point but let's run through an example
+to see exactly how it works. So we're going to take the network
+that we had just discussed, and we're going to compute two iterations
+of the HITS algorithm of the network. So just like in PageRank, we're
+going to have to keep track of the old scores to be able to
+compute the new scores. And because the first step is
+to give every node a hub and authority score of one,
+we're going to start there. We're going to give every node
+an old authority on hub score of 1, and then we're going to
+compute the new scores. So let's start with the authority scores. We look at node A and we're going to look
+at what nodes point to node A in order to figure out what the new
+authority score of A is, and it turns out that C, G, and H point to A. And because C, G, and
+H all have hub score of 1, then the new authority score
+of A is going to be 3. Next, node B, nodes D and E point to B,
+and E and D both have hub score of 1, so B is going to have a new
+authority score of 2. So you can see at this point that what
+we're really doing when we get this new authority score is looking at the
+in-degree of each one of the nodes, and that's what's going to happen. So, for example,
+node C has an in-degree of 5. And because all the nodes at this
+point have a hub score of 1, then C is going to have
+a new authority score of 5. And then D has two nodes pointing to it,
+so it has a new authority score of 2. And E has in-degree of 1,
+F has in-degree of 1. G has in-degree of 0, so it's going
+to have a new authority score of 0. And H has one node pointing to it, so
+it has a new authority score of 1. Okay, now let's move
+to the new hub scores. It's going to be very similar, but
+now instead of looking at the in-degree of every node,
+we're going to look at the auth degree. And so, for example,
+A has an auth degree of 1, it points to D. And now we have to look at
+these old authority score. And again, because this is our first step, every node has an old
+authority score of 1. And D does as well, and so
+A is going to have a new hub score of 1. B points to two things,
+both of them have an authority score of 1, and so B has hub score of 2. C has an auth degree of 1, so
+it has a new hub score of 1. D has an auth degree of 2. E has an auth degree of 4. F has an auth degree of 2. G has auth degree 2, and
+H has auth degree 1. Okay, so the hub for the new hub scores, all we had to do was figure out what
+the auth degree of each node was. Next, we have to normalize. And so, to normalize we have to
+add up the authority scores and add up the hub scores. In this case, they'll both add up to 15. It's not the case that in every duration
+they're going to add up to the same thing, but in the first one they do. So they both in this case add up to 15. And so
+we have to divide all the scores by 15. And so
+if we do that we normalize its scores. And now the new authority and hub scores
+are going to become our old scores. And we're ready to go for the next
+iteration, which is going to be slightly more interesting since now the nodes don't
+all have the same authority and hub score, so we have to pay attention at
+the nodes that we're looking at. So let's start with node A. We want to figure out the new
+authority score of A, and so we have to figure out
+what nodes point to A. So C, G, and H all point to A. And now we have to look at
+the hub scores of C, G, and H, which are 1/15, 2/15, and 1/15. And so we add those up and we get 4/15, and
+that is going to be a new authority score. Now let's move to B.
+B has two nodes pointing to it, E and D. And they have old hub score of 2/15 and
+4/15, which adds up to 6/15. And then C has five things pointing to it,
+nodes E, F, G, B, and D, which have these old hub scores
+that I'm highlighting here. And they add up to 12/15, so
+that's C's new authority score. D has two things pointing to it with
+old hub score of 1/15 and 4/14, which adds up to 1/3, and so on, right? We can continue doing this for
+all of the other nodes and find all of the new authority scores. Now, let's go and
+try to find the new hub scores. So, looking at A, again now,
+we're not looking at the in-degree, we're not looking at who points to it,
+but who does A point to. And now we have to pay attention to
+the old authority scores of those nodes. So in this case, A points to D, and
+D has a old authority score of 2/15, so that's going to be A's new hub score. And then for B it points to E and
+D, and they have and old authorities score of 1/15 and 1/3, which adds up to 2/5, and so
+that's going to be B's new hub score. C points to A and A has an old authority
+score of 1/5, so that's C's new hub score. D points to B and C, and they have
+an old authority score of 2/15 and 1/3, which adds up to 7/15,
+and then so on. We can continue doing this for all the
+other nodes and find the new hub scores. Next we have to normalize. So we have to add up all
+the authority scores. In this case, they add up to 35/15. So we have to divide every
+new authority score by 35/15. So if we do that,
+these are the updated normalized scores. And we do the same thing for the hubs. So we add up the hub scores for all the
+nodes, which adds up to 3 in this case. And so we have to divide
+every new hub score by 3, and then these are the updated
+normalized scores. And so
+these are our final new authority and hub scores after two iterations
+of the HITS algorithm. So just like in PageRank,
+we wonder what happens to the scores if we continue iterating the
+algorithm over and over and over again. Is it going to convert to a unique value? Well, let's take a look. So here are the scores that we just
+computed for k equals 2, 2 iterations, these are the authority scores. So what happens as we go to 4 iterations? Well, this is what you would find. And 6 iterations,
+this is what you would find. And same thing for the hub scores. These are the scores that we found so
+far with 2 iterations, and we can figure out what they are for
+4 iterations and 6 iterations. So what you see here is that for
+some nodes these scores aren't changing, but for others they are changing. So here I'm highlighting the nodes for which the authority or hub score
+continued to change after 6 iterations. So for example, node B here starts
+out with an authority score of .15. Then after 4 iterations, it goes to .18. Then after 6 iterations, it goes to .19. So will this score for
+B continue to grow or will it saturate at some point,
+what could happen here? And so if we continue iterating, here I'm
+showing you what happens to the hub and authority score of node B. So in this plot on the x-axis we
+have the number of iterations, and then the y-axis we have the authority and
+hub scores for node B. As it turns out for most networks,
+as k gets larger, the authority and the hub scores actually do
+converge to a unique value. And in this case, this is a unique value that you find
+as k becomes larger and larger. And so for this network the nodes with
+the highest authority score are B and C, and the nodes with the highest
+hub score are D and E. And if you remember the original
+set up of the network, B, C, and A, were these root nodes, right? The ones that were supposed to be very
+relevant, and it turns out that B and C have the highest authority scores. And then biggest hubs, the nodes that
+are good at pointing at nodes that are particularly irrelevant or
+particular authorities, are D and E. And if you notice both A and D point
+to B and C, as well as other nodes. In particular, D only points to B and C,
+and E points to them too, and also others. Now, to compute the hub scores and the authority scores of
+network using NetworkX, you can use the function hits and give it
+the graph that you're analyzing as input. And hits will output two dictionaries,
+keyed by node, that contain the hub and authority
+scores of all the nodes in that network. So in summary, we find that the HITS algorithm starts by
+constructing a root set of relevant web pages and then expands it to a base
+set using the network structure. And then HITS will assign
+an authority score and a hub score to every node in the network. And here,
+nodes that have incoming edges from good hubs are thought to be good
+authorities, and then nodes that have outgoing edges to good authorities
+are thought to be good hubs. Authority scores and hub scores for most
+networks will converge to a unique value. And you can use NetworkX to find
+the scores by using the function hits on any network that you want to. And that is all for this video,
+and I will see you next time.

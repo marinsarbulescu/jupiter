@@ -1,0 +1,125 @@
+Last time we talked about why we
+want to study social networks. And how social networks show
+up in all kinds of places and can allow us to answer very cool
+questions about the complex phenomenon. Today, we're going to get a little more
+details about the different network definitions and vocabulary we're
+going to use through the course. And we're going to start talking a little
+bit about how we can use NetworkX in Python to build some of
+the different types of networks that we're going to be looking at. So first of all, a network or
+a graph, which we also call a graph, is a representation of
+connections among different sets. So here's an example of a set
+of things which we call nodes, just circles that have labels A through G. So we call these things nodes or vertices. And then there are connections between
+them that can represent various different things. And we call these connections edges,
+or sometimes we call them links or ties as well. And we're going to use NetworkX in
+Python in order to work with some of the networks that we look at. So the first thing you need to know is
+how to create a network in NetworkX. So the first thing we're going to
+do is import networkx as nx. And then we're going to use
+the class Graph in order to represent this network that we see here. So here I'm making G an instance
+of one of those graphs. And then what I can do is I can add edges. So for example here, I'm adding the edge
+A, B, which is this edge right here. And then I would add the next edge,
+which would be the edge B, C. And I could continue adding
+all the other edges. Now notice that I haven't
+added the nodes themselves. And so when you add the edge,
+if the nodes that you're adding, the pairs of nodes that you're
+adding are not in the graph already, NetworkX will automatically
+add them to the graph. So that's pretty cool. Now let's go back to a network
+that we had seen before. This is a network between people and
+the edges here represent friendship, marital ties and
+family ties among 2,200 people. When you look at this
+network one thing that you can see is that these edges
+are mostly symmetric relationships. And by that I mean if A is a friend of B,
+then B is also a friend of A. Or at least most of the time,
+that's the case. And so
+this network has symmetric relationships. But that doesn't always
+have to be the case. So if you look at this network, which
+represents what animals eat other animals, these relationships are very asymmetric. For example, it's very different if you have an edge
+pointing from the fish to the eagle. That says that the eagle eats the fish,
+rather than the other way around. So the direction of the edge in this
+network has a very important meaning to what the edge is trying to represent. So this suggests that we need at least
+two different types of networks. Some that are undirected, meaning
+the edges don't have any direction, or that the direction of the edge
+is not really important, and we call these undirected edges. And in NetworkX we use the class Graph
+to represent these types of networks, just like I showed you before. But if we wanted to have a network
+that actually has direction, like the food web example,
+then you would need directed edges. And to use NetworkX to represent
+the network like this, we would use the class DiGraph,
+which is directed graph. And then we would add the edges. So we will be adding the edge B,
+A and then the edge B, C. And notice that now the order matters. So it's very different to add the edge B,
+C than adding the edge C, B, because now these have directions. The next type of network we're going to
+look at is the weighted network. The intuition here is
+that in some networks, some edges carry different
+weight than others. And so we want a way of capturing this. Let me start with an example
+of such a network. Here's a network where
+the nodes are people and then the edges represent how many
+times they had lunch together. These are coworkers. And so if you look for example at edge A,
+B, A and B had lunch together six times. Whereas the edge C, E, which says that the
+nodes C and E had lunch together 25 times. Those are two very different
+relationships, and so we want a way of capturing this weight. And so weighted network is a network where
+edges are assigned a particular weight, typically a numerical weight, that has some meaning in
+the relationship between the two nodes. In NetworkX, we can represent these types
+of networks also by using the class Graph. But what we're going to do is when we
+add an edge, for example the edge A, B, we're going to add an attribute weight,
+which will have the value 6. And this will allow us to capture
+these weights on the graph. Same thing with the edge B, C,
+which has a weight of 13, and so on. The next type of network we're going to
+look at is the signed network. Now, some networks can carry information
+about friendship but also about antagonism between people, which could
+happened due to conflict or disagreement. So, for example, the websites Epinions and
+Slashdot give people the ability to declare not only who their friends are,
+but also who their enemies are. So now let's look at this network
+that represents who in this network are friends with each other and
+who are enemies with each other. We'd like to have a way of capturing this. And this is called a signed network,
+and now the edges, instead of having a weight,
+they have a positive or negative sign that represents whether
+the people are friends or enemies. And we can also construct these
+types of networks in NetworkX using the class Graph. And now instead of adding
+an attribute weight to the edge, we're going to add an attribute
+which we call sign. And so the edge A,
+B will have a positive sign. And then the edge B,
+C will have a negative sign. So edges can have weights,
+they can have signs, but they can have a bunch of other
+things when you think about it. So here's another example. Now these edges are colored, and they're colored to represent a particular
+type of relationship between two nodes. So here we have nodes who are family
+members or who are friends or who are coworkers or who are neighbors. So in order to represent something
+like this as you might imagine, you can just use another type of
+attribute when you add the edge. In this case we call it relation,
+so when we add the edge A, B, because it has a blue color here, that
+means they're friends, then we're going to add the attribute relation and
+we're going to give it the value friend. Same thing with coworker
+relationship between B and C. And then the family
+relationship between D and E. So in general, we can have any type
+of attribute when we add these edges, we can give the edge any type
+of attribute that we want. So the next type of network we're
+going to look at are called multigraphs. Intuition for multigraphs is that for a single pair of of nodes, there is no
+reason why they shouldn't be able to have many different relationships
+at the same time. So let's go back to
+the example we were looking at. In this graph, the edges represent some
+type of relationship between the nodes, which could be family, friend,
+coworker, or neighbor. There is nothing that stops
+any two nodes from having two kinds of relationships
+at the same time. So, for example, this network,
+in general, could look more like this. Where now the relationship
+between nodes A and B is not only that they're friends,
+but they're also neighbors. Or the relationship between G and F is
+not only that they're family members, but they're also coworkers, and so on. And so this is called a multigraph. It's a network where multiple edges
+can connect the same pair of nodes. They're also called parallel edges. And in NetworkX,
+we're going to use a different class in order to represent multigraphs,
+which is the MultiGraph class. And what we're going to do is when
+we add an edge to a multigraph, and we're going to add it and
+give it a particular attribute. And if we want to add a second
+edge with a different attribute, we can add it again and
+give it a different attribute. And in fact, you don't have to even
+give it attributes to a multigraph. You can just simply add
+multiple parallel edges. And then the multigraph class will capture
+how many edges there are between a given pair of nodes. In this case, we are looking
+at different relationships, so we are using the attributes. And we would add the rest of the edges. So in summary, what we saw in this video is that we
+have many different types of networks. We have undirected networks or
+undirected graphs, which we use the Graph class
+in order to represent them. We have directed graphs for
+which we use the DiGraph class. We have sign networks for
+which we use the Graph class but we assign attribute to
+the edges when we add them. We have multigraphs, and for
+those we use the MultiGraph class, and those can handle multiple edges for
+each pair of notes. And then we have the weighted networks for which we add a weight attribute in
+the edges when we add the edges. Thanks for listening to this lecture,
+and I will see you at the next one.

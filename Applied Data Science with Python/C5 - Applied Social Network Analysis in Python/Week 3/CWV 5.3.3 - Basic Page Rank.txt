@@ -1,0 +1,121 @@
+Hello. We've been thinking about how
+to measure the importance or the centrality of a node in a network. And today we're going to talk
+about another way of doing this. It's called PageRank and it was developed
+by the Google founders when they were thinking about how to measure
+the importance of webpages using the hyperlink network
+structure of the web. And the basic idea, is that PageRank will assign a score
+of importance to every single node. And the assumption that it makes, is that
+important nodes are those that have many in-links from important pages or
+important other nodes. Now, Page Rank can be used on any type of
+network, for example, the web or social networks, but it really works better for
+networks that have directed edges. So, for example, a social network where
+the edges indicate who emailed whom. And so, if we think about the definition,
+what I said, that important pages are those that have
+many in-links from more important pages, then there's a little bit of
+a circular definition, right? Because if you imagine trying to measure
+the PageRank of a particular node, let's say the first node
+that you're looking at, then you would want to look at the
+PageRank of the nodes that point to it. And you don't have those yet. So the ways it's defined
+sounds a little bit circular. And in this video, we're going to walk through the process
+of how you can actually compute it. So the setup is that we're going to
+have a network with n nodes, and then we're going to compute
+PageRank on a step by step fashion. And so, what's going to happen,
+is that the sum of the PageRank or all the nodes is always going to be
+constant, it's always going to be 1. And so at first, we're going to start with
+every node having a PageRank value of 1/n. And then what we're going to do is
+we're going to have every node give all of its PageRank to all the nodes
+that it points to, and then were going to do this over and
+over again. So, what we're going to
+do is we're going to perform these
+Basic PageRank Update Rule k times. And the Basic PageRank Update Rule
+does what I just said. So every node will give an equal share
+of its current PageRank to all the other nodes that it links to. And then, the new value of PageRank for
+every node is going to be simply the sum of all the PageRank that are received
+from all the nodes that point to it. So let's look at an example. Let's take, for example,
+this network here that you see. And now take some time to think
+about which one should be the most important node. And then we're going to compute PageRank,
+and then you can see if your guess
+matches with what PageRank would say. So, we're going to calculate PageRank for
+every node after just 2 steps. I'm going to show you the calculations for
+just 2 steps and then I'm going to show you what happens if you were to
+perform even more steps on this network. So first, like I said, we're going to
+assign every node a PageRank of 1/n. So in this case, every node will
+have a PageRank value of 1/5. And now we're going to start applying
+the Update Rule that I described. So we're going to have to keep track
+of the old values of PageRank, and what the new value of
+PageRank of each node is. Let's start with node A. Nodes D and E point to node A, so
+A is going to get PageRank from D and E. Now let's think about how much
+PageRank A is going to receive from each one of those two nodes. So if we look at D, D has three edges, that points to three different nodes,
+C, A, and E. So A is going to receive 1/3 of
+the current page rank that D has. D currently has 1/ 5 PageRank, and so A is going to get 1/3 of that
+1/5 PageRank that D has. Now A is also going to get PageRank from
+node E, and because E only points to A, then it's going to give all
+of its PageRank to node A. And so A is going to get
+1/5 PageRank from node E. And so, in total, A is going to get
+4/15 PageRank from those two nodes. And so
+the new value PageRank of node A is 4/15. Now, let's think of node B. B gets PageRank from node A. And A currently has 1/5 PageRank. Now, it's important here to note that
+we've updated the PageRank of node A to be 4/15, but when we do this computation,
+we're always using the old values, not the updated values, so B is going
+to get a PageRank of 1/5 from node A. And then B is also getting PageRank from
+C, and so because C is only pointing to node B then it's also going to give all
+of its PageRank to B which is 1/5 and so in total,
+B is getting 2/5 PageRank from both nodes. Now let's look at node C. C is getting PageRank from D which,
+again, is pointing to three nodes, and is giving 1/3 of its PageRank from node C. So C is getting 1/3 times 1/5 from D. And it's also getting
+PageRank from node B. And because Bs pointing to two nodes,
+B is going to give 1/2 of its PageRank to node C for
+a PageRank of 1/2 times 1/5. And so, in total,
+C is getting 5/30 or 1/6 PageRank. Now, node D is getting PageRank from B,
+which again is given half of its PageRank to D and half to C so
+D is getting 1/2 times 1/5. And that's the only node D
+is getting PageRank from. So it's getting a total of 1/10 PageRank. And then E is getting
+PageRank from D only. Which is 1/3 times 1/5, and
+so in total is getting 1/15. So we've now computed the new PageRank
+values of all the nodes, as so that's our first step, K equals 1. And so now those new values are going to
+become our old values, and we're going to do this process again, now using
+the values we got after the first step. We're going to do the exact same thing
+again to get the second step of PageRank, k equals 2. So let's start with node A. A is getting PageRank from D,
+1/3 of its PageRank. And D has 1/10 Page Rank, so
+it's given a 1/3 times 1/10. And A is also getting PageRank from E, E is giving all its PageRank to A,
+so it's getting 1/15 PageRank. And so A, in total, is getting 1/10 and
+that's its new PageRank value. Now if we look at node B,
+B is getting PageRank from node C. C points to only B, so
+you want to give all of its PageRank to B. And it has 1/6, so B is getting 1/6. B is also getting PageRank from A, and A
+is going to give all of its PageRank to B as well, so it's going to give all
+of its current 4/15 PageRank to B. And, in total,
+B is going to be getting 13/30. Now let's go look at node C. C is getting PageRank from D, which again is giving 1/3 of its PageRank
+to each of the three nodes it points to. So C is getting 1/3 times times 1/10. And C is also getting
+PageRank from node B. Which is given half of its PageRank to C,
+so 1/2 times its current PageRank
+which is 2/5 for a total of 7/30. Node D is getting PageRank from B,
+1/2 times 2/5. Finally E is going to be
+getting PageRank from D only, which is 1/3 times 1/10 for
+a total of 1/30. And so that's our new values of PageRank
+for all those nodes after two steps. Now if we look at those values, we find
+that node B has the highest PageRank so far after two steps of 0.43, followed
+by node C, then node D, node A, and E. And so, up to this point, this is suggesting that B is the most
+important node in this network. But what happens if we continue for
+another step? Well here's the values that you
+would get if you go to k equals 3. So you notice that the values
+change a little bit, but so far you still have the same order. And B is still the most important node,
+followed by C, followed by D, followed by A, and followed by E. As you may wonder what happens if I
+just sort of continue doing this for k equals 4, 5, 6 and so on? How do I know when to stop, and how do I know when the actual values
+that I should consider are, right? So what if we continue this process? Well, for this particular network, if you
+continue doing this over and over and do it for many, many, many steps, it turns
+out that eventually these values will start to change very little, so
+they're converging to a unique value. And that unique value, in this case,
+is the values that I'm showing. So B has a PageRank of 0.38,
+C has a page rank of 0.25, and D 0.19, and A .12 and E .06. And actually, it turns out that for most networks, these PageRank
+values will actually converge and that's the value that we think
+of as the PageRank of the nodes. So, the PageRank of the node is the value
+that you get after you do this process many, many, many times. So in summary, the steps of
+Basic PageRank are the following. First, you start with all the nodes
+with a PageRank value of 1/n. And then you perform these
+Basic PageRank Update Rule k times. And this Update Rule said says that every
+node is going to give an equal share of its current PageRank to all
+the other nodes that it links to. And so the new PageRank value of every
+node is going to be simply the sum of all the PageRank that it gets from
+all the nodes that point to it. And for most networks, these PageRank
+values will actually converge as k gets larger, as k goes to infinity. We're going to find that these
+values converge to a unique value. And so
+that's how you compute a basic PageRank. And that's all for this video,
+and I will see you next time.

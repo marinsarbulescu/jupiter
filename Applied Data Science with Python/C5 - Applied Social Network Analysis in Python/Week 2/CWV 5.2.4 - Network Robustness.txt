@@ -1,0 +1,127 @@
+Last time we talked about
+connectivity in networks. Today we're going to talk
+about how connectivity relates to the robustness of a network. So, what is network robustness? The way we loosely define network
+robustness is the ability of a network to maintain
+its general structure, or its general functions when it
+faces failures or attacks. So what kind of attacks
+are we talking about here? Well, we're going to talk about attacks
+that are in the form of removal of nodes or edges. This could be somebody purposely trying to
+remove a node or an edge from a network, or maybe, just random failures
+that the network may have. And then what are the general properties
+that we are going to be discussing? In this case we're going to be
+talking about connectivity, so robustness is going to be the network's
+ability to maintain its connectivity. When it loses some of its nodes or
+some of its edges. So why is this relevant? Why is this important? Let's look at some examples of networks
+that often lose nodes or edges. And these things affect the function. So one example is the air
+transportation network, where the nodes are airports and the edges
+are connections between airports. Well, sometimes airports have to close
+down for many different reasons. And when this happens of course,
+transportation is affected. And so you would like for
+the transportation network to be robust to closures of airports, so that the general
+connectivity or the general function of the network is still maintained even after
+it might have lost one particular airport. Or maybe it's not an airport, maybe
+it's a connection between an airport or some other airport. Maybe both airports are open but
+they're not able to fly to each other for whatever reason. That is the case where the network might
+have lost an edge rather than a node, and you would like for the network to still
+maintain its connectivity or functions. There are plenty of other examples
+like Internet router failures or power line failure and so on. And so for all of these,
+this idea of removing nodes or edges are things that actually happen, and for all of this maintaining
+connectivity is very important. So let's begin looking at our sort of toy example of graph
+here that we've been looking at. And we'll start with an undirected graph,
+and ask what is the smallest number of
+nodes that I would need to remove from this graph in order in
+order to make it disconnected? And so we can actually use a function
+in network X that's node connectivity, and the input will be
+the undirected graph here, G_un. And it says that if I
+just remove one node, I would be able to disconnect
+the graph completely. You can try and see if you can
+figure out which node that is. Or you can use
+the function_minimum_node_cut, and then give it us input
+the undirected graph. And it would tell you which nodes
+are the ones that you can remove in order to disconnect the graph. And in this case, it's node A. So you can see that if you
+were to remove node A, then this graph goes from being
+connected to being disconnected. So now there are two subsets of nodes
+that cannot reach each other, and in the airport example this
+would be really bad, right? If one airport was responsible for
+connecting two major parts of the world, that's something you probably
+wouldn't want to have. Now let's ask the question for edges. What is the smallest number of edges,
+instead of nodes, that we would need to remove from this graph in order
+to completely disconnect it? Well, you can use the function
+edge connectivity and give it us input the undirected graph. And it tells us that there are two edges
+that you need to remove in order to disconnect this graph. Well, which 2 edges are there? You can try to figure it out in your own,
+or you can use the function, minimum_edge_cut, and
+give it us input the undirected graph. And it tells you that the edges that
+you need to remove are, A, G and O, J. And you can see that if you
+remove those two edges, you indeed make the network disconnected. And there are two clusters, two subsets of nodes that cannot
+reach each other anymore. Of course, it's possible that there
+are other options of edges that do this. But the fact that the edge connectivity is two tells us that the smallest number of
+edges that you have to remove is two. Now the particular choice of A,
+G and O, J may not be unique. There may be other options, other pairs of edges that achieve the same
+goal of disconnecting the network. Robust networks are those that have
+a large minimum node and edge cuts. That is those for which you would
+have to remove a lot of nodes or edges in order to be
+able to disconnect them. That's a very desirable property,
+because you don't want your network to be easily disconnected by just
+removing a few nodes or a few edges. Okay, now let's look at
+a different scenario. First of all,
+let's now look at a directed graph, those that have edges that have
+a source and a destination. And now let's think about
+a different setting. Now, let's think about these nodes as
+nodes that want to communicate with each other, that want to pass
+messages to each other. These could be maybe routers, or these
+could be people who are trying to pass a rumor or pass an important
+message to each other, right? And so imagine that node G here
+wants to send a message to node L by passing it along to other
+nodes in this network. So, basically what G wants to
+do is to find the paths that could take a message
+from G all the way to L. What options does G have
+in order to do this? What are those paths that G can use? Well, if you use the function
+all_simple_paths with input G, the graph and then the two nodes that source in
+the destination, in this case G and L. Then you get all the paths. Let's look at each one of those paths. So first one is G, A, N, L. The second one is slightly longer is G,
+A, N, O, K, L. You could also go G, A,
+N, O, L or G, J, O, K, L. Or you could go with a shorter path,
+G, J, O, L. So these are all the options that G has. Okay, now let's imagine
+that there's some attacker, some person that wants to actually block
+the message that's going from G to L. This attacker is no longer interested
+in just disconnecting the network in any particular way, it's interested in particularly disrupting the communication
+that's going from G to L. We could ask the question if this person
+was going to try to do this by removing node, how many nodes would this attack I
+need to remove in order to block G from L. We can use the same function,
+node connectivity as we did before, but now we give this input not only
+the graph G, but also the source and the destination, G and L. And it would tell us how many nodes you
+would need in order to achieve that. And in this case, you would need to
+remove two nodes from the network. Which nodes are they? Again, we can use the same function
+as we used before, minimum_note_cut, and give it the graph, the source and
+the destination as input, and he would tell us which are the two nodes. In this case the nodes are N and O. So, this says that you have to
+remove at least two nodes and here are two options for that N and O. Now let's do some sanity checking here. What if we were only to remove node N, then can we still find a path
+that goes from G to L? And the answer is yes,
+you could take the path G, J, O, K, L. On the other hand,
+if we were to only remove node O, then can the message still make it? And the answer is yes. You could go G, A, N, L. So this shows that it's not enough
+to remove one of these two nodes. And you can check on your own that when
+you actually remove both of these and O, then there is no longer any
+path that can go from G to L. So you need two, and
+these are two that achieve that. We can ask the same question
+as we did before for edges. Now the attacker, let's say,
+is only able to remove edges, not completely remove nodes. How many edges would this attacker need
+to remove in order to block G from L? We can use the function edge_connectivity
+with the input, the graph, the source and destination. And it tells us that It needs two edges
+in order to be able to achieve this. And to figure out which edges they are,
+we can use again the minimum_edge_cut function with
+the graph, the source and the destination. And it tells us that the two edges are A,
+N and J, O, and so here they are shown in red. And you can check that if you were
+to remove those two edges indeed, G would no longer be able
+to send the message to L. So in summary, in this video,
+we've talked about node connectivity, and that is the minimum number of nodes that
+you need in order to disconnect a graph or disconnect a particular pair of nodes. And the functions associated with node
+connectivity are node_connectivity, which tells us the smallest number of nodes
+that you need in order to achieve that. And minimum_node_cut which actually
+tells us which are those nodes. And then you have a similar definition for
+edge connectivity, which is the minimum number of edges that
+you need in order to disconnect the graph, or to disconnect any pair of nodes. And the functions they use are
+edge_connectivity and minimum_edge_cut. And the takeaway here is that
+graph with large node or large edge connectivity are more
+robust to the loss of nodes and edges. And they're able to keep
+their connectivity even if some number of edges and
+nodes are removed from the network. And for many applications, this is a very
+desirable property for networks to have. Thank you for watching, and
+we'll see you next time.

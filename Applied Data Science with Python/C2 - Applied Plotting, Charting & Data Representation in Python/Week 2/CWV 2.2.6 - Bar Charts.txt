@@ -1,0 +1,45 @@
+Matplotlib has support for
+several kinds of bar charts. The most general case, we plot a bar
+chart by sending in a parameter of the x components, and
+a parameter of the height of the bar. Let's do this with our linear data. Here I'm going to just create a list of
+values as long as our linear data list. Then, we'll send this along with
+the linear data's bar heights, to the bar function. We pass in the width of the bar as 0.3. To add a second bar, we simply call
+the bar plot again with new data, keeping in mind that we need to
+adjust the x component to make up for the first bar we plotted. Of course, we'll throw this bar in as red. So the plot looks okay, but not great. All of the x labels are to the far
+left of the items being described, and not centered. Now, we can center them with a given bar,
+using the align parameter, but it's a bit frustrating when you
+have to make multiple bars, and you have to calculate it yourself. And it's a pain to go through and
+add a new data series manually. And this gets worse, we actually
+have to manually iterate through and add in dates if we want them. Because otherwise we couldn't set
+the bar left location appropriately. I'll be honest, bar charts are one of my least favorite
+things to create in matplotlib. I feel like the foundation is there, but some of the ways I
+would want to use the API, such as plotting several series of data
+in groups across time, are sadly missing. There are some other nice
+features of bar charts, though. For instance, you can add error
+bars to each bar as well, using the y-error parameter. For example, each of our pieces of data in
+the linear data might actually be a mean value, computed from many
+different observations. So we could just create
+a list of error values. I'll import from a random function which
+can generate some random integers, and then I'll use a list comprehension
+to generate this new list. Then we could just call plt.bar again,
+and see our new data appear. We can also do stacked bar charts as well. For instance, if we wanted to show
+cumulative values while also keeping the series independent, we could do
+this by setting the bottom parameter and our second plot to be equal
+to first set of data to plot. Finally, we can pivot this bar graph
+into a horizontal bar graph by calling the barh function instead. But note that we have to change the bottom
+to a left and the width to a height. So those are the basics of charting and
+plotting in Matplotlib. I think it's important to realize
+that there really isn't any magic. The scripting layer is really
+a set of convenience functions on top of the object layer. Some people share a preference for
+one or the other, but at the core, they manipulate the same data elements. And I don't think you should think of
+them as being opposed to one another or duplicative. They work together, and being able to
+move back and forth is really important. We've talked about some
+fundamental charts in this module. Scatter plots, line graphs,
+and bar charts. There are more,
+which we'll dig into in the next module. But these are a good basis. The assignment for
+this module is a tough one. It's meant to show you real world
+data visualization problems. You're going to have to lever your
+knowledge of the Pandas Library from the first course and couple this with your new knowledge of
+Matplotlib to come to an elegant solution. But the final result should
+be a portfolio ready piece. So I'll see you in the forums for
+discussions and for help.

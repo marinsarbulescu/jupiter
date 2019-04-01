@@ -1,0 +1,25 @@
+Welcome to the second module in
+the course Applied Plotting, Charting and Data Representation in Python. In the first module, we touched on
+the some of the fundamentals of putting together good
+information graphics. Drawing on influential thinkers in
+the field, such Alberto Cairo and Edward Tufte. In this module, we're going to pivot and
+focus on skills for building basic charts using
+the Python based Matplotlib tool kit. Matplotlib is a powerful open source tool
+kit for representing and visualizing data. Its creator, John Hunter,
+was heavily inspired by the MATLAB programming environment and
+borrows many of these elements. Matplotlib can be a bit confusing
+to learn from web resources. There's a traditional object-oriented API,
+but there's also a MATLAB-like
+scripting model. And I've found that it's not always clear
+why a given script from a blog post might work or not work. I'm going to try and
+demystify this a bit for you by providing a structured
+introduction to the toolkit. After the architecture introduction, we're going to dive right into
+creating charts and graphs. In this module, we're going to focus
+on some of the basics, scatter plots, line graphs, and bar charts. We're also going to touch on how to
+label pieces of your charts to improve readability, and draw the user's
+attention to specific details. And how to manipulate data elements
+in a plotting environment. From here on out there
+will be fewer lectures and more emphasis on the module will be put
+on the plotting and charting assignments. At the end of modules two, three and four,
+you should be able to produce publication quality charts and
+figures using a breadth of data. Let's dive in.

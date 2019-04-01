@@ -1,0 +1,54 @@
+Hi everyone. Today we'll be looking at working
+with text data and pandas. First let's take a look at our data frame. It currently only has the one column,
+text, and each entry is a string containing
+a day of the week and a time. Using the str attribute we are able to
+access the set of string processing methods to make it easy to operate
+on each element in the series. For example,
+applying str.len to the text column shows the number of characters for
+each string in the series. Similarly, we could use str.split to
+split each string on white space, then use str.len to find the number of
+tokens for each element of the series. To check if a string contains a pattern,
+we can use str.contains. Here, we can see which entries
+contain the word appointment. Using str.count, we can count occurences
+of a pattern in each string of the series. Here, we are finding how many times
+a digit occurs in each string. We can find out what these
+occurences are using str.findall. We can also use regular
+expression capturing groups to group patterns of interest. Suppose we wanted to pull out the hour and
+minutes from each string. By capturing these different
+groups with parenthesis, str.findall is able to
+return the groups to us. Next, let's take a look at how to
+use str.replace on our series. Let's replace any instances of a week
+day with three question marks. To do this we pass an irregular expression
+that finds the words that end in day and we pass in the three question marks. Suppose you wanted to use str.replace
+to make a change that was based on the original. This is possible using str.replace and
+lambda expressions. Let's take a look at an example where we
+want to take the weekday from each string and replace it with a three
+letter abbreviation. First, we use the expression that
+finds the weekday for us and we can create a group by
+placing it in parenthesis. Then for the replacement parameter,
+we can pass in a lambda expression. In this case, we use groups to get a tuple
+of the groups, index 0 to get the first, and in this case, only group, and slice
+the first three letters from the group. Looking at the results, we can see
+Monday has been replaced with Mon, Tuesday with Tue, and so on. >> The next method we're going
+to look at is str.extract, which allows us to quickly create new
+columns, using the extracted groups. For example, if we use extract
+with the hour and minutes pattern, from the find all example, we get
+a dataframe with two columns, one for the hours and one for the minutes. Note that str.extract only extracts groups
+from the first match of the pattern. To get all matches use str.extractall. Let's try an example with extractall
+that uses a more complex pattern with more groups. We'll add a capturing group for
+am or pm following the hours and minutes, and add parentheses to
+the entire regular expression, to capture the whole
+pattern as another group. Looking at the data frame returned, we have a multi index where the level
+match, indicates the order of the match. Here we can see there are two matches
+from the last entry of df text. The columns correspond to the capturing
+groups with the whole pattern returns in column 0, the hours in
+column 1, the minutes in column 2, and the period in column 3. One last thing I'd like to show you is
+name groups in regular expressions. We can name a group by adding ?P and
+the name and angle brackets after the first
+parentheses of the group. Extractall will then use the group names
+as the column names of the returned data frame. Here we've added the name time to
+the first group, hour to the second group, minute to the third group, and
+period to the fourth group. Pandas provides many additional
+methods for text data, so be sure to check the Pandas working
+with text data documentation. By using and combining these methods
+you'll be able to do some very powerful text processing of your own with Pandas. Thanks for watching. Hope to see you again next time.
