@@ -17,6 +17,11 @@ p = zeros(m, 1);
 
 
 
+f=@(n) round(n);
+
+s = sigmoid(X * theta);
+
+p = f(s);
 
 
 
