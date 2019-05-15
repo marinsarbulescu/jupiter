@@ -20,7 +20,19 @@ grad = zeros(size(theta));
 %
 
 
+h = X*theta;
+hError = h - y;
+sumSquaredError = sum(hError .^ 2);
+regTermLeft = (1/(2 * m)) * sumSquaredError;
 
+thetaWithoutBias = theta(2:end);
+sumSquaredTheta = sum(thetaWithoutBias .^ 2);
+regTermRight = (lambda / (2 * m)) * sumSquaredTheta;
+
+J = regTermLeft + regTermRight;
+
+grad = (1/m) * X' * hError;
+grad(2:end) += (lambda / m) * thetaWithoutBias;
 
 
 
