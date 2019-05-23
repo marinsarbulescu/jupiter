@@ -8,7 +8,7 @@ import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 from sklearn import neighbors
 import matplotlib.patches as mpatches
-#import graphviz # for some reason we get an error in the main file 'cannot import graphviz'
+import graphviz # need to run "pip install graphviz" from CL
 from sklearn.tree import export_graphviz
 import matplotlib.patches as mpatches
 
