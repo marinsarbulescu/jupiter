@@ -1,0 +1,6 @@
+Wattenberg, et al., "How to Use t-SNE Effectively", Distill, 2016. http://doi.org/10.23915/distill.00002
+http://distill.pub/2016/misread-tsne/#citation
+
+Gleesen, Peter. "How Machines Make Sense of Big Data: an Introduction to Clustering Algorithms", freeCodeCamp, 2017.
+https://medium.freecodecamp.com/how-machines-make-sense-of-big-data-an-introduction-to-clustering-algorithms-4bd97d4fbaba
+
