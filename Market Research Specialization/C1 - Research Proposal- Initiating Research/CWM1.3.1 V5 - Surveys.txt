@@ -1,0 +1,97 @@
+Welcome back. Now, let's focus on market
+research surveys of various kinds. If you decide to do quantitative research, you'll most likely use surveys
+as part of your research plan. If you're looking to quantify a problem
+here, you've got to measure it. You have to collect information
+on the primary side. Surveys are the most
+popular way to do this. And surveys can be done in so
+many different ways. There are pros and
+cons of doing surveys in a particular way. However, surveys are one of
+the most common solutions, especially now in this digital age. After this lesson, you will be able to
+identify which tools you want to work with and conduct the survey for
+your quantitative research. Let's get started. In the past decade Internet Surveys have by far become the most
+common form of survey research. Before that, while still in use today,
+telephone surveys were used most often. Of course there are face to face and
+mail or paper and pencil survey approaches as well, but Internet Surveys
+are obviously very easy to conduct. Internet Surveys can be done with
+an organization's email or they can be conducted via an Internet research panel
+like Research Now our Survey Sampling where individuals are paid for their time
+and effort to participate in surveys. While there are Strengths and
+Weaknesses in every research tool, many organizations trade off
+the Weaknesses in favor of benefits. Internet surveys may have some biases, but are often far more affordable
+than other approaches. Surveys can be used in many situations. They are a great tool when you know
+something can be measured, and the respondent is willing to participate. Data can be quantified in opportunities
+extrapolated from what the data says from a quantitative perspective, which can be
+valuable in the decision making process. Also, there are opportunities
+to segment the data and compare with other segments or
+with past research. The ability to compare is
+a valuable benefit of surveys. I would recommend a survey over
+another methodology when I need clear, definitive, quantitative results here and
+I need a number, basically. Or I need a number I can compare against
+a different segment of the population. Or I need a number that could be compared against a similar survey
+over a period of time. I talked about Net Promoter Score
+earlier in the course. A Net Promoter Score would
+be part of the survey. It's basically a handful of questions that
+can be asked to come up with a score that can be compared against
+another's Net Promoter Score. There's a lot of Net Promoter research
+on the Internet right now, and it's published out there. And you could actually compare
+your Net Promoter Score against an industry average for
+the industry that you work in, or even specific companies who
+publish their Net Promoter Score. There are companies that are very
+religious about their Net Promoter Scores. They track them over time to make
+sure they don't move down or they try to influence
+them by moving them up. They also look at
+Net Promoter Scores by segment. They may want to see what young people
+say compared to maybe what boomers say or give them for a Net Promoter Score. And so
+the only way you can actually quantify and compare accurately is by
+using a survey method. You can't do it qualitatively because
+there's just too much wiggle room and too much margin of error. You would consider using a survey
+if the respondent group or sample members can easily and
+accurately answer the questions. Making survey questions that can
+easily be understood by the public can be challenging. You've got to assume a 5th grade level of
+education when writing your questions. Your wording should be done in a way
+where a person easily understands if they read it or if it's read to them. A 5th grade level education
+will cover about 98 or 99% of the US population,
+in terms of understanding. This is a guideline when
+writing survey questions. There's a lot of debate about
+designing a good question and there needs to be care and consideration
+about designing a good question. Most people will design a survey question
+with the population or target in mind. However, when you design a survey
+question to make it easy to understand, there are a lot of rules to follow. There are rules regarding use
+of active and passive voice. There are rules around
+simplifying compound questions. You shouldn't include jargon or acronyms. You should not word a question
+with a negative, or write it in a way that influences
+the response in a particular way. There are many rules to follow in
+terms of making questions easy so you can accurately extract
+information from them. You will have a lesson on writing survey
+questions in the quantitative course of this specialization. I think it really comes down to creating
+a survey where most people will be able to understand and answer a very
+standard question you devise. When creating surveys, there's a lot of debate in terms of scales
+as well, based on how you ask questions. People understand 1
+through 10 pretty easily. On a scale of 1 to 10,
+how would you rate this? This is pretty uniform
+across our population, because we have five fingers on one hand. We have 10 fingers overall for
+most of us, then 10 fingers, 10 toes. That's a good measure or
+a standard measure, and therefore people understand it
+in terms of a survey scale. However, there are cases where you
+can Strongly agree, Somewhat agree, Neither agree nor disagree,
+Somewhat disagree, and Strongly disagree. You need to put these types of
+questions in context to the situation. It's not going to work all the time and sometimes people kind of stretch
+things out in terms of their scales. And they make no sense at all, so
+as a result the accuracy fails. Another challenge that's really
+difficult to address is when people do research on children. Sometimes it's not easy to get and
+also the information may not be accurate. Sometimes you can't measure the exact
+read on terms of toy preference. There is a lot of really brilliant
+companies out there that do research in a particular way on children. They develop experiments and
+they get them to respond with happy faces, sad faces in terms of scales. That might be strong enough to
+get the response accurately. They also may have to structure
+a market research study that goes not only after children but
+after their parents. Because parents are ultimately
+the purchasers of items for children. You need to look at this from
+a lot of different levels. The elderly are the same thing. If you're testing a type of prescription
+drug, for example, in terms of preference and in terms of television, there may be a
+high viewership of television and you ask that person that fits in a certain age
+demographic what their response would be. It might be a little more difficult
+in terms of getting the response that you are looking for. Or to getting accuracy across the board. So as you can see,
+there are definitely Pros and Cons of doing surveys in a particular way. However, hopefully now you have a better
+idea of which tools that you want to work with and conduct a survey for
+your quantitative research.

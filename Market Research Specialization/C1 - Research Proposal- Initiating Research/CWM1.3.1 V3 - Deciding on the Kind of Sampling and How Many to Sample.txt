@@ -1,0 +1,95 @@
+Welcome back,
+there are many ways to sample. There are entire courses and
+books dedicated to this topic. In this lesson, let me address some of
+the ways of sampling that are prevalent. After this lesson, you'll be able to
+decide how many people you need to sample for your research project and
+which kinds of sampling you will use. Let's start out with figuring
+out your sampling size. Technically, you should base the size
+of the sample on the need for credibility and the risk level involved. There are websites you can use to
+determine error margin calculations. But first,
+you've gotta look at that purpose. You may have heard before that you need at
+least 400 people for an internet survey. How do people come up with the number
+that is tossed around quite a bit. Here's how. Market research commonly aims to
+get an error margin of plus or minus 5% at 95% confidence. That is generally the industry
+standard across the board. In order for you to do that,
+you need to have something like 387 but people always say 400. That's why you often hear 400 for
+a sample size. That's a general sample size that you need
+to have in order to be scientifically credible among the profession. However, people often sample fewer,
+say 50 or 100 and
+they accept higher levels of error. But the risk may not be as bad. There are other cases where people
+will survey 1,000 or 5,000. That may be to reduce the error margin,
+but it's also to increase public perception. Every news outlet that does a pole
+never reports 400 because 400 is not a cool number. 1,000 is what they report, they did
+1,000 surveys of registered voters or a sample size of 5,000 registered voters. Nobody announces 400 on
+national television. When you survey 1,000, you have
+an error margin of plus or minus 3%. It's very unlikely that
+you're going to be wrong. There's still that 3%, but
+your chances of being wrong are less. It's also considered newsworthy to
+have 1,000 or 5,000 for the media. So aim for a 5% error margin or
+less to be considered credible. There are many margin of error
+calculators or sample size calculators. The one I use is from
+the American Research group. But there are many others including ones
+from SurveyMonkey, Qualtrics, or Raosoft. Using such calculator, you can
+insert a sample size of say 400 and this assumes a very large population and
+it'll produce a error margin of plus or minus 3% and 95% confidence. And this assumes a population of the U.S. or large populations in California or
+Pennsylvania. However, when you have a customer base of,
+say, 643, you're sample size doesn't have to be 400. It's going to be something different. If I were to use a sample size calculator
+and plugged in that I had a population of 643 customers and I want a plus or
+minus 5% I would run the calculation, and a calculator would tell me to do 240
+surveys of my 643 to get plus or minus 5%. The American research group that provided
+the calculator I use is a company that does surveys and survey research. This is just one of their tools
+to get you onto their site. You can also do the same
+thing with SurveyMonkey or contracts who also have
+sample such calculators. Now let's consider sampling,what
+kind of sampling do you use from the many available. A common tool for most market
+researchers is the random sample. This is dine in a manner
+to exclude any bias or systematic errors in selecting a sample. It's typically the best way to sample,
+but also more rigid. This approach has a higher likelihood
+to get market research results that represent the population. However, there are other sampling methods
+as well, such as a convenience sample, where the researcher gets the first
+x number of people they need to address a situation. There are clear disadvantages to this, but the major advantage of
+this approach is time. Most people who employ a convenient
+sample do so in a low risk situation. There are other sampling
+methods like a quota sample where you're done when you reach
+a certain numbers of quota. There's also a snowball sample where you
+build your sample based on your existing sample or participants. The ladder is often acceptable approach
+when you're having difficulty finding qualified research participants. Some people use this approach for
+in-depth or executive research sometimes called key
+informant or an opinion leader research. There are many other ways of sample and
+entire courses are books dedicated the sampling, explore
+the subject in much greater detail. A random sample is the preferred
+method of sampling, however, there are many corporations, companies, organizations in market research firms
+that use other sampling methods. It really comes down to what their
+constraints are and what their goals are. If their goal is to get quick information, such as talking pandas
+versus talking rabbits, they may not need a random sample for
+that, they may just need a tie breaker. In this case they might just
+want to do a quota sample. Let me explain quota sampling. That was the example I gave
+earlier on the talking pandas and talking rabbits situation. In that the researcher needed to get
+the first 50 people they can get from a target age audience of those under 25. A random sample,
+you actually have to say, okay, there's ways to create randomness in terms
+of how to find these first 50 people. You take a random number and
+you take that 17th person and then you do another random number and
+you take the 212th person. You use a random number generator,
+which uses some kind of algorithm that gives you random numbers to
+choose emails or phone numbers. For the quota sample,
+there's no randomness about it. The quota sample and a convenience
+sample are actually a lot alike. It's all about ways to get
+to that number you need for your sample size very quickly. A snowball sample, on the other hand, is
+used when you have very few participants and that are hard to reach participants. For example, you might have difficulty
+finding people with osteoporosis. You want to test market a certain
+marketing message to them. However, people that have osteoporosis
+might be in a support group where they know other
+people with osteoporosis. So after you survey them, you ask them. Okay, is there anybody else with this
+condition that I could actually tap into? You can ask them,
+how can I contact your friend? And how can I contact your other friend? And you snowball off these people. It's a very highly biased
+method of sampling. But it's fairly efficient in terms of
+reaching a hard to reach audience. This actually happens a lot
+with business surveys as well. You may need to do an in-depth interview
+with a business leader in terms of hiring millennials, but it's a business
+leader in the engineering field. So you're talking about
+engineering being hard to reach. You might say something like, okay,
+who will be your peer at another company, and they'd say okay,
+talk to Jansen Smith in XYZ corporation. And so now you're interviewing her, and then you go on to interview two
+of Jansen Smith's contexts. In the snowball sample
+you're very very bias, but at the same you're getting data
+on a very targeted or niche market.
